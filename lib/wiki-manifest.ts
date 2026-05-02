@@ -24,7 +24,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "Getting-Started",
     category: "Guides",
     order: 1,
-    description: "Install localpress and connect your first WordPress site in minutes.",
+    description: "Install localPress and connect your first WordPress site in minutes.",
   },
   {
     slug: "ai-agent-integration",
@@ -32,7 +32,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "AI-Agent-Integration",
     category: "Guides",
     order: 2,
-    description: "Use localpress with Claude Desktop, Cursor, and other AI agents via the companion skill.",
+    description: "Use localPress with Claude Desktop, Cursor, and other AI agents via the companion skill.",
   },
   {
     slug: "commands-reference",

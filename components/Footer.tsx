@@ -8,7 +8,7 @@ export function Footer() {
           {/* Brand + tagline */}
           <div>
             <Link href="/" className="text-sm font-medium" style={{ color: "var(--ink)" }}>
-              localpress
+              localPress
             </Link>
             <p className="mt-0.5 text-xs" style={{ color: "var(--dim)" }}>
               Your laptop, your library. MIT License.

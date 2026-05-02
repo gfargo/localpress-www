@@ -23,7 +23,7 @@ export async function generateMetadata({
     description: page.description,
     openGraph: {
       type: "article",
-      title: `${page.title} — localpress docs`,
+      title: `${page.title} — localPress docs`,
       description: page.description,
       url: `https://localpress.griffen.codes/docs/${slug}`,
     },

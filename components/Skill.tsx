@@ -11,8 +11,8 @@ const steps = [
   },
   {
     num: "02",
-    title: "Process via localpress",
-    body: "The agent runs localpress commands locally — compress, convert, or remove backgrounds using your CPU/GPU.",
+    title: "Process via localPress",
+    body: "The agent runs localPress commands locally — compress, convert, or remove backgrounds using your CPU/GPU.",
     cmd: "localpress optimize 123 124 125 --json",
   },
   {
@@ -53,7 +53,7 @@ export function Skill() {
             A skill, not a server
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-            A markdown skill teaches your AI agent how to drive localpress — composing with whatever
+            A markdown skill teaches your AI agent how to drive localPress — composing with whatever
             WordPress MCP server you already have. No new protocol code, no versioning headaches.
           </p>
         </div>

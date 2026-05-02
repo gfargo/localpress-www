@@ -1,5 +1,5 @@
 const checks = [
-  { flag: "--unoptimized", desc: "Images never processed by localpress" },
+  { flag: "--unoptimized", desc: "Images never processed by localPress" },
   { flag: "--large", desc: "Images over a size threshold (default 1 MB)" },
   { flag: "--missing-alt", desc: "Images without alt text (accessibility / SEO)" },
   { flag: "--display-size", desc: "Images larger than their biggest registered thumbnail" },
@@ -28,7 +28,7 @@ export function Audit() {
       <div className="container mx-auto px-4 py-24">
         <div className="mb-16">
           <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-            localpress audit
+            localPress audit
           </p>
           <h2
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"

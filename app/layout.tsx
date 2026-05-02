@@ -23,8 +23,8 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s — localpress",
-    default: "localpress — Local-compute WordPress media optimization",
+    template: "%s — localPress",
+    default: "localPress — Local-compute WordPress media optimization",
   },
   description:
     "Your laptop, your library. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress. No cloud SaaS. No recurring credits. No plugin required.",
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://localpress.griffen.codes",
-    siteName: "localpress",
-    title: "localpress — Local-compute WordPress media optimization",
+    siteName: "localPress",
+    title: "localPress — Local-compute WordPress media optimization",
     description:
       "Your laptop, your library. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress.",
     images: [
@@ -52,13 +52,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "localpress",
+        alt: "localPress",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "localpress — Local-compute WordPress media optimization",
+    title: "localPress — Local-compute WordPress media optimization",
     description: "Your laptop, your library.",
     creator: "@gfargo",
     images: ["/og-image.png"],

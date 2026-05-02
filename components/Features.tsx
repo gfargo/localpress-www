@@ -27,7 +27,7 @@ export function Features() {
       <div className="container mx-auto px-4 py-24">
         <div className="mb-16">
           <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-            Why localpress
+            Why localPress
           </p>
           <h2
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"

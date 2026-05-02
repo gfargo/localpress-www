@@ -5,7 +5,7 @@ import { getWikiCategories } from "@/lib/wiki-manifest"
 export const metadata: Metadata = {
   title: "Documentation",
   description:
-    "Learn how to install, configure, and master localpress — the local-compute WordPress media optimization CLI.",
+    "Learn how to install, configure, and master localPress — the local-compute WordPress media optimization CLI.",
 }
 
 export default function DocsPage() {
@@ -21,7 +21,7 @@ export default function DocsPage() {
           Everything you need
         </h1>
         <p className="max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-          Install, configure, and master localpress. Content is sourced from the GitHub Wiki and
+          Install, configure, and master localPress. Content is sourced from the GitHub Wiki and
           baked in at build time.
         </p>
         <div className="flex flex-wrap gap-3 mt-6">

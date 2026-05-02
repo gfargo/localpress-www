@@ -5,8 +5,8 @@ import { DocsMobileNav } from "@/components/docs/DocsMobileNav"
 
 export const metadata: Metadata = {
   title: {
-    template: "%s — localpress docs",
-    default: "Documentation — localpress",
+    template: "%s — localPress docs",
+    default: "Documentation — localPress",
   },
 }
 

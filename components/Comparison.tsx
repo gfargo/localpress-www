@@ -10,7 +10,7 @@ const rows = [
 
 const cols = ["localpress", "ewww", "shortpixel", "smush", "imagify"] as const;
 const labels: Record<(typeof cols)[number], string> = {
-  localpress: "localpress",
+  localpress: "localPress",
   ewww: "EWWW",
   shortpixel: "ShortPixel",
   smush: "Smush",

@@ -1,99 +1,222 @@
-const categories = [
+const featured = [
   {
-    title: "Setup",
-    commands: [
-      { name: "init", desc: "Connect a WordPress site (interactive wizard)" },
-      { name: "sites", desc: "List, add, switch, or remove configured sites" },
-      { name: "doctor", desc: "Show backend availability + --fix" },
-      { name: "config", desc: "Read/write config values, manage profiles" },
-    ],
+    name: "optimize",
+    category: "Processing",
+    tagline: "Compress without compromise",
+    detail:
+      "sharp + jSquash WASM codecs. Set a quality floor, pick a format, process your entire library in one pass.",
+    example: "localpress optimize --quality 82 --format webp --unoptimized",
   },
   {
-    title: "Discovery",
-    commands: [
-      { name: "list", desc: "Browse media library with filters" },
-      { name: "show <id>", desc: "Detailed metadata and processing history" },
-      { name: "audit", desc: "Comprehensive library health check" },
-      { name: "references <id>", desc: "Find every post that uses an attachment" },
-    ],
+    name: "remove-bg",
+    category: "AI",
+    tagline: "Background removal. No cloud.",
+    detail:
+      "ONNX Runtime + U2-Net runs on your hardware. M-series Mac finishes in 1.5 s. No API key. No credits.",
+    example: "localpress remove-bg 847 --model u2net",
   },
   {
-    title: "Processing",
-    commands: [
-      { name: "optimize", desc: "Compress with sharp or jSquash WASM codecs" },
-      { name: "convert", desc: "Format conversion: JPEG → WebP, PNG → AVIF" },
-      { name: "resize", desc: "Resize + regenerate thumbnails" },
-      { name: "remove-bg", desc: "AI background removal via local ONNX Runtime" },
-    ],
+    name: "audit",
+    category: "Discovery",
+    tagline: "Seven health checks, one command",
+    detail:
+      "Unoptimized, oversized, missing alt text, display-size mismatch, duplicate images, broken refs, orphaned files — surfaced in seconds.",
+    example: "localpress audit",
+  },
+]
+
+const secondary = [
+  {
+    name: "convert",
+    category: "Processing",
+    tagline: "JPEG → WebP → AVIF",
+    detail: "Batch format conversion tuned for every modern browser.",
   },
   {
-    title: "Round-trip & low-level",
-    commands: [
-      { name: "edit <id>", desc: "Download → editor → watch → sync" },
-      { name: "pull", desc: "Download attachments to local disk" },
-      { name: "push", desc: "Upload files with replace-in-place fallback" },
-    ],
+    name: "edit",
+    category: "Round-trip",
+    tagline: "Open in any editor. Syncs back.",
+    detail: "Download → GIMP, Photoshop, or Preview → save → automatically pushed to WordPress.",
   },
-];
+  {
+    name: "references",
+    category: "Discovery",
+    tagline: "Find every usage",
+    detail: "Scan all posts for an attachment's URL. Rewrite them in-place after a rename or move.",
+  },
+]
+
+const utilities = [
+  { name: "init", desc: "Interactive site wizard" },
+  { name: "sites", desc: "Manage multiple sites" },
+  { name: "doctor", desc: "Capability check + --fix" },
+  { name: "config", desc: "Profiles + scalar values" },
+  { name: "list", desc: "Browse media library" },
+  { name: "show", desc: "Attachment metadata" },
+  { name: "resize", desc: "Resize + regen thumbnails" },
+  { name: "pull", desc: "Download to local disk" },
+  { name: "push", desc: "Upload + replace-in-place" },
+]
+
+const categoryColor: Record<string, string> = {
+  Processing: "var(--accent)",
+  AI: "var(--accent)",
+  Discovery: "var(--warm)",
+  "Round-trip": "var(--dim)",
+}
 
 export function Commands() {
   return (
-    <section id="commands" style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}>
+    <section
+      id="commands"
+      style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}
+    >
       <div className="container mx-auto px-4 py-24">
+        {/* Header */}
         <div className="mb-16">
-          <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
+          <p
+            className="mb-3 text-xs uppercase tracking-widest"
+            style={{ color: "var(--dim)" }}
+          >
             Command reference
           </p>
           <h2
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            15 commands, 5 categories
+            15 commands built for real workflows
           </h2>
+          <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
+            From a single image to your entire library — every operation is local, idempotent, and
+            dry-run safe.
+          </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {categories.map((cat) => (
+        {/* Featured — 3 marquee commands */}
+        <div className="grid gap-4 md:grid-cols-3 mb-4">
+          {featured.map((cmd) => (
             <div
-              key={cat.title}
-              className="overflow-hidden rounded-lg"
-              style={{ border: "1px solid var(--border)" }}
+              key={cmd.name}
+              className="flex flex-col rounded-lg overflow-hidden"
+              style={{ border: "1px solid var(--border)", background: "var(--surface)" }}
             >
-              {/* Terminal title bar */}
-              <div
-                className="flex items-center gap-2 px-4 py-2.5"
-                style={{ background: "var(--raised)", borderBottom: "1px solid var(--border)" }}
-              >
-                <div className="flex gap-1.5" aria-hidden="true">
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
-                </div>
-                <span className="ml-2 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-                  {cat.title}
+              {/* Card body */}
+              <div className="flex flex-col gap-3 p-6 flex-1">
+                {/* Category badge */}
+                <span
+                  className="self-start rounded-full px-2 py-0.5 text-xs uppercase tracking-widest"
+                  style={{
+                    border: `1px solid ${categoryColor[cmd.category]}`,
+                    color: categoryColor[cmd.category],
+                    opacity: 0.7,
+                  }}
+                >
+                  {cmd.category}
                 </span>
+
+                {/* Command name */}
+                <div>
+                  <span
+                    className="mr-1.5 text-xs font-medium"
+                    style={{ color: "var(--muted)" }}
+                    aria-hidden="true"
+                  >
+                    $
+                  </span>
+                  <code
+                    className="text-xl font-medium tracking-tight"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    {cmd.name}
+                  </code>
+                </div>
+
+                {/* Tagline + detail */}
+                <p className="text-sm font-medium leading-snug" style={{ color: "var(--ink)" }}>
+                  {cmd.tagline}
+                </p>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>
+                  {cmd.detail}
+                </p>
               </div>
 
-              {/* Commands */}
-              <div className="divide-y" style={{ background: "var(--surface)", borderColor: "var(--wire)" }}>
-                {cat.commands.map((cmd) => (
-                  <div key={cmd.name} className="flex items-start gap-4 px-4 py-3">
-                    <code
-                      className="mt-0.5 shrink-0 text-xs font-medium"
-                      style={{ color: "var(--accent)", minWidth: "7rem" }}
-                    >
-                      {cmd.name}
-                    </code>
-                    <span className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>
-                      {cmd.desc}
-                    </span>
-                  </div>
-                ))}
+              {/* Example command */}
+              <div
+                className="px-4 py-3 font-mono text-xs truncate"
+                style={{
+                  background: "var(--raised)",
+                  borderTop: "1px solid var(--wire)",
+                  color: "var(--dim)",
+                }}
+              >
+                <span style={{ color: "var(--muted)" }}>$ </span>
+                <span style={{ color: "var(--warm)" }}>{cmd.example}</span>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Secondary — 3 supporting commands */}
+        <div className="grid gap-4 md:grid-cols-3 mb-8">
+          {secondary.map((cmd) => (
+            <div
+              key={cmd.name}
+              className="hover-raised rounded-lg p-5"
+              style={{
+                border: "1px solid var(--wire)",
+                background: "var(--surface)",
+              }}
+            >
+              <div className="flex items-start justify-between gap-4 mb-2">
+                <code
+                  className="text-sm font-medium"
+                  style={{ color: "var(--accent)" }}
+                >
+                  $ {cmd.name}
+                </code>
+                <span
+                  className="shrink-0 text-xs uppercase tracking-widest"
+                  style={{ color: "var(--muted)" }}
+                >
+                  {cmd.category}
+                </span>
+              </div>
+              <p className="text-xs font-medium mb-1" style={{ color: "var(--ink)" }}>
+                {cmd.tagline}
+              </p>
+              <p className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>
+                {cmd.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Utility strip — 9 plumbing commands */}
+        <div
+          className="rounded-lg px-5 py-4"
+          style={{ border: "1px solid var(--wire)", background: "var(--surface)" }}
+        >
+          <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>
+            Also included
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {utilities.map((cmd) => (
+              <div
+                key={cmd.name}
+                className="hover-wire group flex items-center gap-2 rounded px-3 py-1.5"
+                style={{ border: "1px solid transparent", background: "var(--raised)" }}
+              >
+                <code className="text-xs font-medium" style={{ color: "var(--accent)" }}>
+                  {cmd.name}
+                </code>
+                <span className="text-xs" style={{ color: "var(--dim)" }}>
+                  {cmd.desc}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
-  );
+  )
 }

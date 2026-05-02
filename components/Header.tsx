@@ -23,9 +23,9 @@ export function Header() {
           href="/"
           className="cursor-blink text-sm tracking-tight"
           style={{ color: "var(--ink)" }}
-          aria-label="localpress home"
+          aria-label="localPress home"
         >
-          localpress
+          localPress
         </Link>
 
         <nav className="hidden gap-0.5 md:flex" aria-label="Main navigation">
