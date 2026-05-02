@@ -9,14 +9,7 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
-  const interRegular = await fetch(
-    new URL("../../public/fonts/Inter-Regular.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-  
-  const firaCodeRegular = await fetch(
-    new URL("../../public/fonts/FiraCode-Regular.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-
+  // Use system fonts to avoid external dependencies
   return new ImageResponse(
     (
       <div
@@ -30,7 +23,7 @@ export default async function OpenGraphImage() {
           justifyContent: "center",
           padding: "60px",
           color: "white",
-          fontFamily: "Inter",
+          fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
         }}
       >
         {/* Terminal-style header */}
