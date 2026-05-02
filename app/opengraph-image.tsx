@@ -9,7 +9,6 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
-  // Use system fonts to avoid external dependencies
   return new ImageResponse(
     (
       <div
@@ -23,7 +22,6 @@ export default async function OpenGraphImage() {
           justifyContent: "center",
           padding: "60px",
           color: "white",
-          fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
         }}
       >
         {/* Terminal-style header */}
@@ -65,7 +63,7 @@ export default async function OpenGraphImage() {
               marginLeft: "auto",
               fontSize: "18px",
               color: "#a1a1aa",
-              fontFamily: "Fira Code",
+              fontFamily: "monospace",
             }}
           >
             localpress:~$
@@ -128,7 +126,7 @@ export default async function OpenGraphImage() {
               borderRadius: "12px",
               padding: "20px 30px",
               border: "1px solid #374151",
-              fontFamily: "Fira Code",
+              fontFamily: "monospace",
               fontSize: "24px",
               color: "#d1d5db",
               display: "flex",
@@ -161,20 +159,6 @@ export default async function OpenGraphImage() {
     ),
     {
       ...size,
-      fonts: [
-        {
-          name: "Inter",
-          data: interRegular,
-          style: "normal",
-          weight: 400,
-        },
-        {
-          name: "Fira Code",
-          data: firaCodeRegular,
-          style: "normal",
-          weight: 400,
-        },
-      ],
     }
   );
 }
