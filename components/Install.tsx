@@ -2,72 +2,115 @@ import Link from "next/link";
 
 export function Install() {
   return (
-    <section className="bg-white py-24 dark:bg-black">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-4 text-3xl font-bold text-zinc-900 dark:text-zinc-50 md:text-4xl">
-            Install localpress
-          </h2>
-          <p className="mb-8 text-lg text-zinc-600 dark:text-zinc-400">
-            Choose your preferred installation method. We recommend Homebrew for macOS and Linux users.
-          </p>
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-              <h3 className="mb-3 text-xl font-semibold text-zinc-900 dark:text-zinc-50">Homebrew</h3>
-              <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
-                Recommended for macOS and Linux
-              </p>
-              <div className="relative group">
-                <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-50 dark:to-zinc-400 opacity-75 blur transition duration-200 group-hover:opacity-100 group-hover:duration-200"></div>
-                <div className="relative flex items-center rounded-lg bg-white px-4 py-3 font-mono text-zinc-900 dark:bg-black dark:text-zinc-50">
-                  <span className="mr-2 text-zinc-400">$</span>
-                  <code className="text-sm">brew install gfargo/localpress/localpress</code>
-                </div>
-              </div>
-              <Link
-                href="https://github.com/gfargo/homebrew-localpress"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block text-sm font-medium text-zinc-900 underline hover:text-zinc-700 dark:text-zinc-50 dark:hover:text-zinc-300"
+    <section style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}>
+      <div className="container mx-auto px-4 py-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-16 text-center">
+            <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
+              Installation
+            </p>
+            <h2
+              className="font-display text-3xl font-semibold italic md:text-4xl"
+              style={{ color: "var(--ink)" }}
+            >
+              Three ways to install
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {/* Homebrew — primary */}
+            <div
+              className="overflow-hidden rounded-lg"
+              style={{ border: "1px solid var(--accent-mid)", background: "var(--accent-subtle)" }}
+            >
+              <div
+                className="flex items-center justify-between px-5 py-3"
+                style={{ borderBottom: "1px solid var(--accent-mid)" }}
               >
-                View Homebrew tap
-              </Link>
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
+                  <span className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--accent)" }}>
+                    Homebrew — recommended
+                  </span>
+                </div>
+                <a
+                  href="https://github.com/gfargo/homebrew-localpress"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs transition-opacity hover:opacity-75"
+                  style={{ color: "var(--dim)" }}
+                >
+                  View tap ↗
+                </a>
+              </div>
+              <div className="flex items-center gap-3 px-5 py-4">
+                <span className="select-none text-xs font-medium" style={{ color: "var(--accent)" }}>$</span>
+                <code className="flex-1 text-sm" style={{ color: "var(--warm)" }}>
+                  brew install gfargo/localpress/localpress
+                </code>
+              </div>
             </div>
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-              <h3 className="mb-3 text-xl font-semibold text-zinc-900 dark:text-zinc-50">Binary download</h3>
-              <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
-                Pre-built binaries for all platforms
-              </p>
-              <Link
+
+            {/* Binary download */}
+            <div
+              className="flex items-center justify-between gap-4 rounded-lg px-5 py-4"
+              style={{ border: "1px solid var(--border)", background: "var(--raised)" }}
+            >
+              <div>
+                <p className="mb-0.5 text-sm font-medium" style={{ color: "var(--ink)" }}>
+                  Binary download
+                </p>
+                <p className="text-xs" style={{ color: "var(--body)" }}>
+                  Pre-built binaries for macOS (arm64, x64), Linux (arm64, x64), Windows (x64)
+                </p>
+              </div>
+              <a
                 href="https://github.com/gfargo/localpress/releases"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="shrink-0 rounded px-4 py-2 text-xs font-medium transition-opacity hover:opacity-75"
+                style={{ border: "1px solid var(--border)", color: "var(--ink)" }}
               >
-                Download from GitHub Releases
-              </Link>
+                Releases ↗
+              </a>
             </div>
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-              <h3 className="mb-3 text-xl font-semibold text-zinc-900 dark:text-zinc-50">From source</h3>
-              <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
-                Requires Bun &gt;= 1.1.0
-              </p>
-              <div className="relative group">
-                <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-50 dark:to-zinc-400 opacity-75 blur transition duration-200 group-hover:opacity-100 group-hover:duration-200"></div>
-                <div className="relative flex items-center rounded-lg bg-white px-4 py-3 font-mono text-zinc-900 dark:bg-black dark:text-zinc-50">
-                  <span className="mr-2 text-zinc-400">$</span>
-                  <code className="text-sm">git clone https://github.com/gfargo/localpress.git</code>
-                </div>
+
+            {/* From source */}
+            <div
+              className="overflow-hidden rounded-lg"
+              style={{ border: "1px solid var(--border)", background: "var(--raised)" }}
+            >
+              <div
+                className="flex items-center justify-between px-5 py-3"
+                style={{ borderBottom: "1px solid var(--border)" }}
+              >
+                <span className="text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
+                  From source — requires Bun ≥ 1.1
+                </span>
               </div>
-              <Link
-                href="https://github.com/gfargo/localpress"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block text-sm font-medium text-zinc-900 underline hover:text-zinc-700 dark:text-zinc-50 dark:hover:text-zinc-300"
-              >
-                View on GitHub
-              </Link>
+              <div className="space-y-2 p-4">
+                {[
+                  "git clone https://github.com/gfargo/localpress.git",
+                  "cd localpress && bun install",
+                  "bun run build",
+                ].map((line, i) => (
+                  <div key={i} className="flex items-center gap-3 rounded px-3 py-2" style={{ background: "var(--bg)" }}>
+                    <span className="select-none text-xs" style={{ color: "var(--muted)" }}>{i + 1}</span>
+                    <code className="text-xs" style={{ color: "var(--body)" }}>{line}</code>
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/docs/getting-started"
+              className="text-sm transition-opacity hover:opacity-75"
+              style={{ color: "var(--accent)" }}
+            >
+              Read the Getting Started guide →
+            </Link>
           </div>
         </div>
       </div>

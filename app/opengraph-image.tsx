@@ -1,72 +1,94 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from "next/og"
 
-export const runtime = "edge";
-export const alt = "localpress — Local-compute WordPress media optimization";
-export const size = {
-  width: 1200,
-  height: 630,
-};
-export const contentType = "image/png";
+export const dynamic = "force-static"
+export const alt = "localpress — Local-compute WordPress media optimization"
+export const size = { width: 1200, height: 630 }
+export const contentType = "image/png"
 
 export default async function OpenGraphImage() {
   return new ImageResponse(
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #0a0a0a 0%, #171717 100%)",
+          background: "#060606",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "60px",
-          color: "white",
+          padding: "64px",
+          fontFamily: "monospace",
         }}
       >
-        {/* Terminal-style header */}
+        {/* Dot grid texture */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.12,
+            backgroundImage:
+              "radial-gradient(circle, #252525 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+
+        {/* Accent glow */}
+        <div
+          style={{
+            position: "absolute",
+            top: -100,
+            left: "50%",
+            marginLeft: -300,
+            width: 600,
+            height: 600,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(0,229,153,0.12) 0%, transparent 70%)",
+          }}
+        />
+
+        {/* Window chrome */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "12px",
-            marginBottom: "40px",
-            width: "100%",
+            gap: 8,
+            marginBottom: 48,
+            position: "relative",
           }}
         >
           <div
             style={{
-              width: "12px",
-              height: "12px",
+              width: 12,
+              height: 12,
               borderRadius: "50%",
-              background: "#ef4444",
+              background: "#3a3a3a",
             }}
           />
           <div
             style={{
-              width: "12px",
-              height: "12px",
+              width: 12,
+              height: 12,
               borderRadius: "50%",
-              background: "#f59e0b",
+              background: "#3a3a3a",
             }}
           />
           <div
             style={{
-              width: "12px",
-              height: "12px",
+              width: 12,
+              height: 12,
               borderRadius: "50%",
-              background: "#10b981",
+              background: "#3a3a3a",
             }}
           />
           <div
             style={{
               marginLeft: "auto",
-              fontSize: "18px",
-              color: "#a1a1aa",
-              fontFamily: "monospace",
+              fontSize: 16,
+              color: "#5a5a5a",
+              letterSpacing: "0.1em",
             }}
           >
-            localpress:~$
+            bash
           </div>
         </div>
 
@@ -75,90 +97,93 @@ export default async function OpenGraphImage() {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
             flex: 1,
+            position: "relative",
           }}
         >
-          <h1
-            style={{
-              fontSize: "72px",
-              fontWeight: "bold",
-              marginBottom: "20px",
-              background: "linear-gradient(90deg, #ffffff 0%, #a1a1aa 100%)",
-              backgroundClip: "text",
-              color: "transparent",
-              lineHeight: 1.1,
-            }}
-          >
-            Your laptop,
-          </h1>
-          <h1
-            style={{
-              fontSize: "72px",
-              fontWeight: "bold",
-              marginBottom: "40px",
-              background: "linear-gradient(90deg, #10b981 0%, #0ea5e9 100%)",
-              backgroundClip: "text",
-              color: "transparent",
-              lineHeight: 1.1,
-            }}
-          >
-            your library.
-          </h1>
-
-          <p
-            style={{
-              fontSize: "28px",
-              color: "#a1a1aa",
-              maxWidth: "800px",
-              marginBottom: "40px",
-              lineHeight: 1.4,
-            }}
-          >
-            Local-compute WordPress media optimization. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors.
-          </p>
-
-          {/* Terminal command */}
           <div
             style={{
-              background: "#1f2937",
-              borderRadius: "12px",
-              padding: "20px 30px",
-              border: "1px solid #374151",
-              fontFamily: "monospace",
-              fontSize: "24px",
-              color: "#d1d5db",
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
+              fontSize: 20,
+              color: "#5a5a5a",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              marginBottom: 24,
             }}
           >
-            <span style={{ color: "#6b7280" }}>$</span>
-            <span>brew install gfargo/localpress/localpress</span>
+            localpress
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+            <div
+              style={{
+                fontSize: 90,
+                fontWeight: 700,
+                color: "#f0ece3",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Your laptop,
+            </div>
+            <div
+              style={{
+                fontSize: 90,
+                fontWeight: 700,
+                color: "#00e599",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              your library.
+            </div>
+          </div>
+
+          <div
+            style={{
+              marginTop: 36,
+              fontSize: 26,
+              color: "#8a8580",
+              maxWidth: 720,
+              lineHeight: 1.5,
+            }}
+          >
+            Local-compute WordPress media optimization. No cloud SaaS. No
+            recurring credits. No plugin required.
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Install command */}
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-            marginTop: "40px",
-            paddingTop: "20px",
-            borderTop: "1px solid #374151",
-            color: "#6b7280",
-            fontSize: "18px",
+            alignItems: "center",
+            gap: 12,
+            padding: "20px 28px",
+            background: "#181818",
+            border: "1px solid #252525",
+            borderRadius: 8,
+            marginTop: 40,
+            position: "relative",
           }}
         >
-          <span>localpress.griffen.codes</span>
-          <span>No cloud SaaS • No recurring credits • No plugin required</span>
+          <span style={{ color: "#00e599", fontSize: 18, fontWeight: 500 }}>
+            $
+          </span>
+          <span style={{ color: "#c8c4bb", fontSize: 20 }}>
+            brew install gfargo/localpress/localpress
+          </span>
+          <div
+            style={{
+              marginLeft: "auto",
+              fontSize: 16,
+              color: "#5a5a5a",
+            }}
+          >
+            localpress.griffen.codes
+          </div>
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
-  );
+    { ...size }
+  )
 }

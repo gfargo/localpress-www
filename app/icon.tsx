@@ -1,77 +1,46 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from "next/og"
 
-export const runtime = "edge";
-export const size = {
-  width: 32,
-  height: 32,
-};
-export const contentType = "image/png";
+export const dynamic = "force-static"
+export const size = { width: 32, height: 32 }
+export const contentType = "image/png"
 
 export default async function Icon() {
   return new ImageResponse(
     (
       <div
         style={{
-          background: "#0a0a0a",
+          background: "#060606",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: "6px",
+          borderRadius: 6,
         }}
       >
-        {/* Simple terminal prompt icon */}
         <div
           style={{
-            width: "16px",
-            height: "16px",
-            background: "linear-gradient(135deg, #10b981 0%, #0ea5e9 100%)",
-            borderRadius: "4px",
-            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 2,
           }}
         >
-          {/* Terminal dots */}
-          <div
+          <span style={{ color: "#00e599", fontSize: 18, fontWeight: 700 }}>
+            $
+          </span>
+          <span
             style={{
-              position: "absolute",
-              bottom: "-8px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              display: "flex",
-              gap: "2px",
+              width: 8,
+              height: 14,
+              background: "#00e599",
+              borderRadius: 1,
+              opacity: 0.85,
             }}
-          >
-            <div
-              style={{
-                width: "3px",
-                height: "3px",
-                borderRadius: "50%",
-                background: "#ef4444",
-              }}
-            />
-            <div
-              style={{
-                width: "3px",
-                height: "3px",
-                borderRadius: "50%",
-                background: "#f59e0b",
-              }}
-            />
-            <div
-              style={{
-                width: "3px",
-                height: "3px",
-                borderRadius: "50%",
-                background: "#10b981",
-              }}
-            />
-          </div>
+          />
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
-  );
+    { ...size }
+  )
 }

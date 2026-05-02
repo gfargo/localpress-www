@@ -1,39 +1,67 @@
 import type { Metadata } from "next";
-import { Inter, Fira_Code } from "next/font/google";
+import { Fraunces, DM_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
+  style: ["normal", "italic"],
+  axes: ["WONK", "opsz", "SOFT"],
 });
 
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
+const dmMono = DM_Mono({
+  variable: "--font-dm-mono",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "localpress — Local-compute WordPress media optimization",
-  description: "Your laptop, your library. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress. No cloud SaaS. No recurring credits. No plugin required.",
-  keywords: ["wordpress", "cli", "media", "image-optimization", "background-removal", "local-first", "rest-api"],
+  title: {
+    template: "%s — localpress",
+    default: "localpress — Local-compute WordPress media optimization",
+  },
+  description:
+    "Your laptop, your library. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress. No cloud SaaS. No recurring credits. No plugin required.",
+  keywords: [
+    "wordpress",
+    "cli",
+    "media",
+    "image-optimization",
+    "background-removal",
+    "local-first",
+    "rest-api",
+  ],
   authors: [{ name: "Griffen Fargo", url: "https://github.com/gfargo" }],
+  metadataBase: new URL("https://localpress.griffen.codes"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://localpress.griffen.codes",
+    siteName: "localpress",
     title: "localpress — Local-compute WordPress media optimization",
-    description: "Your laptop, your library. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress.",
-    images: [{ url: "https://localpress.griffen.codes/og-image.png" }],
+    description:
+      "Your laptop, your library. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "localpress",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "localpress — Local-compute WordPress media optimization",
     description: "Your laptop, your library.",
     creator: "@gfargo",
+    images: ["/og-image.png"],
   },
 };
 
@@ -45,12 +73,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${firaCode.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${dmMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-black dark:text-zinc-50">
+      <body className="min-h-full flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

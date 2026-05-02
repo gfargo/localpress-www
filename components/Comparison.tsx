@@ -1,73 +1,91 @@
-const features = [
-  "Processing location",
-  "Recurring cost",
-  "Works on shared host",
-  "AI background removal",
-  "Desktop editor round-trip",
-  "AI agent integration",
-  "Open source",
+const rows = [
+  { feature: "Processing location", localpress: "Your laptop", ewww: "WP server", shortpixel: "Cloud", smush: "Cloud", imagify: "Cloud" },
+  { feature: "Recurring cost", localpress: "$0", ewww: "$0 – $25/mo", shortpixel: "$4 – $10/mo", smush: "$3 – $13/mo", imagify: "$6 – $12/mo" },
+  { feature: "Works on shared host", localpress: "✓", ewww: "Needs exec()", shortpixel: "✓", smush: "✓", imagify: "✓" },
+  { feature: "AI background removal", localpress: "✓ local", ewww: "✗", shortpixel: "✓ paid", smush: "✗", imagify: "✗" },
+  { feature: "Desktop editor round-trip", localpress: "✓", ewww: "✗", shortpixel: "✗", smush: "✗", imagify: "✗" },
+  { feature: "AI agent skill", localpress: "✓", ewww: "✗", shortpixel: "✗", smush: "✗", imagify: "✗" },
+  { feature: "License", localpress: "MIT", ewww: "GPLv3", shortpixel: "Proprietary", smush: "Mixed", imagify: "Proprietary" },
 ];
 
-const data = [
-  {
-    name: "localpress",
-    values: ["Your laptop", "$0", "✓", "✓ (local)", "✓", "✓ (skill)", "MIT"],
-  },
-  {
-    name: "EWWW",
-    values: ["WP server", "$0-25/mo", "Requires exec()", "✗", "✗", "✗", "GPLv3"],
-  },
-  {
-    name: "ShortPixel",
-    values: ["Cloud", "$3.99-9.99/mo", "✓", "✓ (paid)", "✗", "✗", "Proprietary"],
-  },
-  {
-    name: "Smush",
-    values: ["Cloud", "$3-13/mo", "✓", "✗", "✗", "✗", "Mixed"],
-  },
-  {
-    name: "Imagify",
-    values: ["Cloud", "$5.99-11.99/mo", "✓", "✗", "✗", "✗", "Proprietary"],
-  },
-];
+const cols = ["localpress", "ewww", "shortpixel", "smush", "imagify"] as const;
+const labels: Record<(typeof cols)[number], string> = {
+  localpress: "localpress",
+  ewww: "EWWW",
+  shortpixel: "ShortPixel",
+  smush: "Smush",
+  imagify: "Imagify",
+};
 
 export function Comparison() {
   return (
-    <section id="compare" className="bg-zinc-50 py-24 dark:bg-zinc-900/50">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="mb-4 text-3xl font-bold text-zinc-900 dark:text-zinc-50 md:text-4xl">
+    <section id="compare" style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}>
+      <div className="container mx-auto px-4 py-24">
+        <div className="mb-16">
+          <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
             Competitive positioning
-          </h2>
-          <p className="mb-8 text-lg text-zinc-600 dark:text-zinc-400">
-            No existing tool combines WordPress-awareness, processing on the user's local machine, and round-trip workflows with desktop editors.
           </p>
-          <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-black">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50">
-                <tr>
-                  <th className="px-6 py-4 font-semibold">Feature</th>
-                  {data.map((item) => (
-                    <th key={item.name} className="px-6 py-4 font-semibold">
-                      {item.name}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
-                {features.map((feature, i) => (
-                  <tr key={feature} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
-                    <td className="px-6 py-4 font-medium text-zinc-900 dark:text-zinc-50">{feature}</td>
-                    {data.map((item) => (
-                      <td key={item.name} className="px-6 py-4 text-zinc-600 dark:text-zinc-400">
-                        {item.values[i]}
-                      </td>
-                    ))}
-                  </tr>
+          <h2
+            className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
+            style={{ color: "var(--ink)" }}
+          >
+            No one else runs on your machine
+          </h2>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px] border-collapse text-xs">
+            <thead>
+              <tr style={{ borderBottom: "1px solid var(--border)" }}>
+                <th className="py-3 pr-6 text-left font-medium" style={{ color: "var(--dim)" }}>
+                  Feature
+                </th>
+                {cols.map((col) => (
+                  <th
+                    key={col}
+                    className="px-4 py-3 text-left font-medium"
+                    style={{
+                      color: col === "localpress" ? "var(--accent)" : "var(--dim)",
+                      background: col === "localpress" ? "var(--accent-subtle)" : "transparent",
+                    }}
+                  >
+                    {labels[col]}
+                  </th>
                 ))}
-              </tbody>
-            </table>
-          </div>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, i) => (
+                <tr
+                  key={row.feature}
+                  style={{ borderBottom: i < rows.length - 1 ? "1px solid var(--wire)" : "none" }}
+                >
+                  <td className="py-3 pr-6 font-medium" style={{ color: "var(--warm)" }}>
+                    {row.feature}
+                  </td>
+                  {cols.map((col) => {
+                    const val = row[col];
+                    const isLp = col === "localpress";
+                    const isCheck = val === "✓" || val.startsWith("✓");
+                    const isCross = val === "✗";
+                    return (
+                      <td
+                        key={col}
+                        className="px-4 py-3"
+                        style={{
+                          color: isCheck && isLp ? "var(--accent)" : isCross ? "var(--muted)" : isLp ? "var(--ink)" : "var(--body)",
+                          background: isLp ? "var(--accent-subtle)" : "transparent",
+                          fontWeight: isLp ? 500 : 400,
+                        }}
+                      >
+                        {val}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>

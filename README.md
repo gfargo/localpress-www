@@ -2,7 +2,7 @@
 
 > "Your laptop, your library."
 
-Marketing website for localpress — a CLI tool that processes WordPress media on the user's local machine and syncs results back via REST API.
+Marketing and documentation website for localpress — a CLI tool that processes WordPress media locally and syncs back via REST API.
 
 **Live site:** [localpress.griffen.codes](https://localpress.griffen.codes)  
 **Repo:** `gfargo/localpress-www` (checked out at `.www/` in the main project)
@@ -10,10 +10,12 @@ Marketing website for localpress — a CLI tool that processes WordPress media o
 ## Tech Stack
 
 - **Framework:** Next.js 16.2.4 (App Router, static export)
-- **Language:** TypeScript (strict mode)
+- **Language:** TypeScript (strict)
 - **Styling:** Tailwind CSS v4
+- **Markdown:** react-markdown v10 + remark-gfm
+- **Analytics:** Vercel Analytics
 - **Fonts:** Inter (body), Fira Code (monospace)
-- **Deployment:** Static export (compatible with GitHub Pages, Vercel, etc.)
+- **Deployment:** Vercel (static export, `out/` directory)
 
 ## Development
 
@@ -23,7 +25,7 @@ bun install
 bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000). In dev mode, the `/docs` pages read wiki content from the local `../.wiki/` directory.
 
 ## Build
 
@@ -31,95 +33,84 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 bun run build
 ```
 
-Outputs to `.www/out/` as static HTML files.
+Outputs to `.www/out/` as static HTML. At build time, the docs pages fetch wiki content from GitHub raw URLs (or `../.wiki/` in dev).
 
-## Current Implementation Status
+## Wiki Integration
 
-✅ **Implemented:**
-- Hero section with headline, subhead, CTA buttons
-- Features section (4 differentiator pillars)
-- Commands overview (15 CLI commands across 5 categories)
-- Audit deep-dive (7 audit checks with examples)
-- Install section (Homebrew, binary download, source)
-- Documentation page (pulls from GitHub Wiki)
-- Responsive layout with dark mode
-- Proper meta tags for SEO
+Documentation is sourced from the [GitHub Wiki](https://github.com/gfargo/localpress/wiki) and baked into the static export at build time.
 
-✅ **Implemented from outline:**
-- Hero section with headline, subhead, CTA buttons
-- Features section (4 differentiator pillars)
-- Commands overview (15 CLI commands across 5 categories)
-- Audit deep-dive (7 audit checks with examples)
-- Comparison table vs competitors (EWWW, ShortPixel, Smush, Imagify)
-- AI Agent Integration section (skill + MCP composition)
-- Install section (Homebrew, binary download, source)
-- Documentation page (pulls from GitHub Wiki)
-- Responsive layout with dark mode
-- Proper meta tags for SEO
+### How it works
 
-❌ **Missing from outline:**
-- Terminal recording visuals (asciinema/GIF demos)
-- Content assets (Open Graph image, comparison graphic)
+- **Dev:** `lib/wiki.ts` reads `.wiki/*.md` files from the local wiki checkout
+- **Build:** Fetches from `https://raw.githubusercontent.com/wiki/gfargo/localpress/{Page}.md`
+- **Token:** Set `GITHUB_TOKEN` as a Vercel env var to avoid rate limits (not required for public repos, but recommended for CI)
 
-🛠 **Technical debt:**
-- Multiple lockfiles warning (root vs `.www/bun.lock`)
-- TypeScript errors ignored during build
-- Image optimization disabled (needs CDN for production)
+### Pages (defined in `lib/wiki-manifest.ts`)
+
+| Slug | Wiki Page | Category |
+|------|-----------|----------|
+| `getting-started` | Getting-Started.md | Guides |
+| `ai-agent-integration` | AI-Agent-Integration.md | Guides |
+| `commands-reference` | Commands-Reference.md | Reference |
+| `configuration` | Configuration.md | Reference |
+
+To add a page: push it to the wiki, then add an entry to `lib/wiki-manifest.ts` and redeploy.
+
+### Keeping docs fresh
+
+A GitHub Actions workflow (`.github/workflows/rebuild-on-wiki.yml`) triggers a Vercel rebuild whenever the wiki changes. To activate:
+
+1. Create a **Deploy Hook** in Vercel → Project → Settings → Git → Deploy Hooks
+2. Add it as `VERCEL_DEPLOY_HOOK` in the **main repo**'s GitHub secrets (Settings → Secrets → Actions)
 
 ## Project Structure
 
 ```
 .www/
 ├── app/
-│   ├── layout.tsx          # Root layout with metadata
-│   ├── page.tsx           # Homepage (Hero → Features → Commands → Audit → Comparison → Install)
+│   ├── layout.tsx          # Root layout with metadata + Vercel Analytics
+│   ├── page.tsx            # Homepage (Hero → Features → Commands → Audit → Comparison → Skill → Install)
+│   ├── sitemap.ts          # Dynamic sitemap (/ + /docs + all doc slugs)
+│   ├── robots.txt          # Crawl rules
 │   └── docs/
-│       └── page.tsx       # Documentation page (pulls from GitHub Wiki)
-├── components/            # React components
-│   ├── Hero.tsx          # Landing hero with CTA
-│   ├── Features.tsx      # 4 differentiator pillars
-│   ├── Commands.tsx     # CLI command categories
-│   ├── Audit.tsx        # Audit checks with examples
-│   ├── Comparison.tsx   # [TODO] Competitor comparison
-│   ├── Install.tsx      # Installation methods
-│   ├── Header.tsx       # Site header
-│   └── Footer.tsx       # Site footer
+│       ├── layout.tsx      # Docs shell with sticky sidebar
+│       ├── page.tsx        # /docs index — category grid + resources
+│       └── [slug]/
+│           └── page.tsx    # Individual doc page (generateStaticParams)
+├── components/
+│   ├── Header.tsx, Footer.tsx, Hero.tsx, Features.tsx, ...
+│   └── docs/
+│       ├── DocsContent.tsx     # react-markdown renderer (Server Component)
+│       ├── DocsSidebar.tsx     # Sticky sidebar nav (Client Component — needs usePathname)
+│       └── DocsNavigation.tsx  # Prev/Next page links
 ├── lib/
-│   └── wiki.ts          # GitHub Wiki API client
-└── public/              # Static assets
+│   ├── wiki-manifest.ts    # Page registry, categories, helper functions
+│   └── wiki.ts             # Content fetcher (local dev / GitHub raw)
+└── public/                 # Static assets
 ```
 
-## Design Notes
+## Environment Variables
 
-- **Tone:** Technical but approachable, developer-focused
-- **Color palette:** Terminal-inspired (dark background, green/cyan accents)
-- **Typography:** Monospace for code, clean sans-serif for body
-- **No signup/email capture:** Open-source tool, CTA is "install it"
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `GITHUB_TOKEN` | Optional | Authenticates GitHub raw content fetches at build time (avoids 60 req/hr rate limit) |
 
-## Next Steps (Roadmap)
-
-### Priority 1: Complete missing outline sections
-1. **Create terminal recordings** — asciinema demos of audit → optimize → verify workflow
-2. **Create content assets** — Open Graph image, favicon, comparison graphic
-3. **Test wiki integration** — Verify docs page pulls from updated GitHub Wiki
-
-### Priority 2: Technical improvements
-1. **Fix lockfile warning** — remove root `bun.lock` or set `turbopack.root`
-2. **Enable image optimization** — configure Next.js Image component with CDN
-3. **Fix TypeScript strictness** — resolve errors instead of ignoring
-4. **Add analytics** — Plausible/Umami for traffic insights
-
-### Priority 3: Content & polish
-1. **Create Open Graph image** — 1200×630 with tagline + terminal screenshot
-2. **Add favicon** — terminal prompt icon
-3. **Improve docs page** — better content organization
-4. **Add blog/updates section** — for release announcements
+Set in Vercel: Project → Settings → Environment Variables → `GITHUB_TOKEN` → Production + Preview.
 
 ## Deployment
 
-The site is configured for static export (`output: "export"` in `next.config.ts`). Deploy to:
+```bash
+# Preview
+vercel
 
-- **Vercel:** `vercel deploy --prod`
-- **GitHub Pages:** Push to `gh-pages` branch
-- **Netlify:** `netlify deploy --prod`
-- **Any static host:** Serve `out/` directory
+# Production
+vercel --prod
+```
+
+The site deploys as a static export. No server runtime needed.
+
+## What's missing
+
+- Terminal recording visuals (asciinema/GIF demos)
+- Open Graph image (`/public/og-image.png`)
+- Mobile sidebar drawer for docs (currently hidden on small screens)
