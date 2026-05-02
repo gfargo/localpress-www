@@ -35,6 +35,14 @@ export const wikiPages: WikiPage[] = [
     description: "Use localPress with Claude Desktop, Cursor, and other AI agents via the companion skill.",
   },
   {
+    slug: "wp-cli-ssh-setup",
+    title: "WP-CLI SSH Setup",
+    wikiPath: "WP-CLI-SSH-Setup",
+    category: "Guides",
+    order: 3,
+    description: "Configure SSH access to unlock replace-in-place, thumbnail regeneration, and full reference rewrites.",
+  },
+  {
     slug: "commands-reference",
     title: "Commands Reference",
     wikiPath: "Commands-Reference",
