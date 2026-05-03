@@ -33,7 +33,7 @@ export function Hero() {
             style={{ border: "1px solid var(--border)", color: "var(--dim)" }}
           >
             <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "var(--accent)" }} />
-            v1.3.0 &nbsp;·&nbsp; MIT &nbsp;·&nbsp; macOS / Linux / Windows
+            v1.3.1 &nbsp;·&nbsp; MIT &nbsp;·&nbsp; macOS / Linux / Windows
           </div>
 
           <h1

@@ -43,12 +43,20 @@ export const wikiPages: WikiPage[] = [
     description: "Configure SSH access to unlock replace-in-place, thumbnail regeneration, and full reference rewrites.",
   },
   {
+    slug: "ollama-setup",
+    title: "Ollama Setup",
+    wikiPath: "Ollama-Setup",
+    category: "Guides",
+    order: 4,
+    description: "Install Ollama and pull a vision model to enable local AI alt-text generation with the caption command.",
+  },
+  {
     slug: "commands-reference",
     title: "Commands Reference",
     wikiPath: "Commands-Reference",
     category: "Reference",
     order: 1,
-    description: "Complete documentation for all 15 CLI commands across 5 categories.",
+    description: "Complete documentation for all 18 CLI commands across 5 categories.",
   },
   {
     slug: "configuration",
