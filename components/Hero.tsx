@@ -40,16 +40,16 @@ export function Hero() {
             className="font-display mb-6 text-5xl font-semibold italic leading-[1.08] tracking-tight md:text-7xl lg:text-8xl"
             style={{ color: "var(--ink)" }}
           >
-            Your laptop,
+            Local-first
             <br />
             <span className="glow-accent" style={{ color: "var(--accent)" }}>
-              your library.
+              WordPress tooling.
             </span>
           </h1>
 
           <p className="mb-10 max-w-2xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
-            Local-compute WordPress media optimization. Compress, convert, remove backgrounds,
-            and round-trip with your real editor — then sync back via REST. No cloud SaaS. No
+            Compress, convert, remove backgrounds, and round-trip with your real desktop editor —
+            then sync back to WordPress via REST. Your hardware does the work. No cloud SaaS. No
             credits. No plugin required.
           </p>
 

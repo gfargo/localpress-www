@@ -11,7 +11,7 @@ export function Footer() {
               localPress
             </Link>
             <p className="mt-0.5 text-xs" style={{ color: "var(--dim)" }}>
-              Your laptop, your library. MIT License.
+              Local-first WordPress tooling. MIT License.
             </p>
           </div>
 

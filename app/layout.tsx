@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { themeInitScript } from "@/components/ThemeToggle";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -24,10 +25,10 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   title: {
     template: "%s — localPress",
-    default: "localPress — Local-compute WordPress media optimization",
+    default: "localPress — Local-first WordPress tooling",
   },
   description:
-    "Your laptop, your library. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress. No cloud SaaS. No recurring credits. No plugin required.",
+    "Local-first WordPress tooling. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress. No cloud SaaS. No recurring credits. No plugin required.",
   keywords: [
     "wordpress",
     "cli",
@@ -39,14 +40,20 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Griffen Fargo", url: "https://github.com/gfargo" }],
   metadataBase: new URL("https://localpress.griffen.codes"),
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://localpress.griffen.codes",
     siteName: "localPress",
-    title: "localPress — Local-compute WordPress media optimization",
+    title: "localPress — Local-first WordPress tooling",
     description:
-      "Your laptop, your library. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress.",
+      "Local-first WordPress tooling. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress.",
     images: [
       {
         url: "/og-image.png",
@@ -58,8 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "localPress — Local-compute WordPress media optimization",
-    description: "Your laptop, your library.",
+    title: "localPress — Local-first WordPress tooling",
+    description: "Local-first WordPress tooling.",
     creator: "@gfargo",
     images: ["/og-image.png"],
   },
@@ -73,8 +80,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="system"
       className={`${fraunces.variable} ${dmMono.variable} h-full`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
