@@ -2,7 +2,7 @@ const features = [
   {
     num: "01",
     title: "Bring your own GPU",
-    body: "Your M-series Mac does background removal in 1.5 seconds. ShortPixel charges 1 credit per image. You do the math.",
+    body: "State-of-the-art BiRefNet runs background removal on your M-series Mac in seconds. ShortPixel charges 1 credit per image. You do the math.",
   },
   {
     num: "02",

@@ -4,16 +4,16 @@ const featured = [
     category: "Processing",
     tagline: "Compress without compromise",
     detail:
-      "sharp + jSquash WASM codecs. Set a quality floor, pick a format, process your entire library in one pass.",
-    example: "localpress optimize --quality 82 --format webp --unoptimized",
+      "sharp + jSquash WASM codecs. Set a quality floor, pick a format, preview in the browser with --preview, or process your entire library in one pass.",
+    example: "localpress optimize 123 --preview",
   },
   {
     name: "remove-bg",
     category: "AI",
     tagline: "Background removal. No cloud.",
     detail:
-      "ONNX Runtime + U2-Net runs on your hardware. M-series Mac finishes in 1.5 s. No API key. No credits.",
-    example: "localpress remove-bg 847 --model u2net",
+      "Five ONNX models including state-of-the-art BiRefNet — all running on your hardware. Preview and tweak in the browser before applying.",
+    example: "localpress remove-bg 847 --model birefnet-lite --preview",
   },
   {
     name: "audit",
@@ -53,6 +53,8 @@ const utilities = [
   { name: "config", desc: "Profiles + scalar values" },
   { name: "list", desc: "Browse media library" },
   { name: "show", desc: "Attachment metadata" },
+  { name: "stats", desc: "Cumulative processing stats" },
+  { name: "caption", desc: "AI alt-text via Ollama" },
   { name: "resize", desc: "Resize + regen thumbnails" },
   { name: "pull", desc: "Download to local disk" },
   { name: "push", desc: "Upload + replace-in-place" },
@@ -84,7 +86,7 @@ export function Commands() {
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            15 commands built for real workflows
+            18 commands built for real workflows
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
             From a single image to your entire library — every operation is local, idempotent, and

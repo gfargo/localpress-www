@@ -5,11 +5,14 @@ import { Audit } from "@/components/Audit";
 import { Comparison } from "@/components/Comparison";
 import { Skill } from "@/components/Skill";
 import { Install } from "@/components/Install";
+import { getLatestVersion } from "@/lib/github";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const version = await getLatestVersion();
+
   return (
     <>
-      <Hero />
+      <Hero version={version} />
       <Features />
       <Commands />
       <Audit />

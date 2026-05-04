@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export function Hero() {
+export function Hero({ version }: { version: string }) {
   const [copied, setCopied] = useState(false);
   const installCmd = "brew install gfargo/localpress/localpress";
 
@@ -33,7 +33,7 @@ export function Hero() {
             style={{ border: "1px solid var(--border)", color: "var(--dim)" }}
           >
             <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "var(--accent)" }} />
-            v1.3.1 &nbsp;·&nbsp; MIT &nbsp;·&nbsp; macOS / Linux / Windows
+            v{version} &nbsp;·&nbsp; MIT &nbsp;·&nbsp; macOS / Linux / Windows
           </div>
 
           <h1
