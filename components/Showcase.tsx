@@ -35,13 +35,13 @@ export function Showcase() {
             className="mb-3 text-xs uppercase tracking-widest"
             style={{ color: "var(--dim)" }}
           >
-            See it in action
+            What it looks like
           </p>
           <h2
             className="font-display mx-auto max-w-lg text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            A real CLI, not a toy
+            Your media library, from the terminal
           </h2>
         </div>
 
