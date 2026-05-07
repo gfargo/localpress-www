@@ -14,18 +14,6 @@ const screenshots = [
     label: "localpress optimize --preview",
   },
   {
-    src: "/screenshots/preview-image-2.png",
-    alt: "localPress quick-view — browser-based image preview with optimization controls",
-    caption: "Quick-view with real-time optimization controls",
-    label: "localpress optimize --preview",
-  },
-  {
-    src: "/screenshots/details-view-a.png",
-    alt: "localPress attachment details — view metadata, dimensions, file size, and optimization history",
-    caption: "Full attachment metadata at a glance",
-    label: "localpress show",
-  },
-  {
     src: "/screenshots/details-view-b.png",
     alt: "localPress detailed view — extended attachment information including references and processing history",
     caption: "Extended details with references and history",
