@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { Showcase } from "@/components/Showcase";
 import { Features } from "@/components/Features";
 import { Commands } from "@/components/Commands";
 import { Audit } from "@/components/Audit";
@@ -13,6 +14,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero version={version} />
+      <Showcase />
       <Features />
       <Commands />
       <Audit />
