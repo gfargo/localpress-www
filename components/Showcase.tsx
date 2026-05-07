@@ -2,19 +2,34 @@ import Image from "next/image";
 
 const screenshots = [
   {
-    src: "/screenshots/localPress - Interactive List.png",
+    src: "/screenshots/interactive-list.png",
     alt: "localPress interactive media browser — browse and filter your WordPress media library from the terminal",
     caption: "Browse your entire media library without leaving the terminal",
+    label: "localpress list",
   },
   {
-    src: "/screenshots/localPress - Preview Image.png",
+    src: "/screenshots/preview-image.png",
     alt: "localPress image preview — see optimization results with before/after comparison in the browser",
     caption: "Preview optimization results before syncing back",
+    label: "localpress optimize --preview",
   },
   {
-    src: "/screenshots/localPress - Details View A.png",
+    src: "/screenshots/preview-image-2.png",
+    alt: "localPress quick-view — browser-based image preview with optimization controls",
+    caption: "Quick-view with real-time optimization controls",
+    label: "localpress optimize --preview",
+  },
+  {
+    src: "/screenshots/details-view-a.png",
     alt: "localPress attachment details — view metadata, dimensions, file size, and optimization history",
     caption: "Full attachment metadata at a glance",
+    label: "localpress show",
+  },
+  {
+    src: "/screenshots/details-view-b.png",
+    alt: "localPress detailed view — extended attachment information including references and processing history",
+    caption: "Extended details with references and history",
+    label: "localpress show --verbose",
   },
 ];
 
@@ -77,7 +92,7 @@ export function Showcase() {
               className="ml-3 text-xs"
               style={{ color: "var(--dim)" }}
             >
-              localpress list — Interactive Media Browser
+              {screenshots[0].label}
             </span>
           </div>
 
@@ -102,7 +117,7 @@ export function Showcase() {
           {screenshots[0].caption}
         </p>
 
-        {/* Secondary screenshots — two-up grid */}
+        {/* Secondary screenshots — 2×2 grid */}
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {screenshots.slice(1).map((shot) => (
             <div
@@ -115,24 +130,32 @@ export function Showcase() {
             >
               {/* Mini chrome */}
               <div
-                className="flex items-center gap-1.5 px-3 py-2"
+                className="flex items-center gap-2 px-3 py-2"
                 style={{
                   background: "var(--raised)",
                   borderBottom: "1px solid var(--border)",
                 }}
               >
+                <div className="flex gap-1.5" aria-hidden="true">
+                  <span
+                    className="h-2 w-2 rounded-full"
+                    style={{ background: "var(--muted)" }}
+                  />
+                  <span
+                    className="h-2 w-2 rounded-full"
+                    style={{ background: "var(--muted)" }}
+                  />
+                  <span
+                    className="h-2 w-2 rounded-full"
+                    style={{ background: "var(--muted)" }}
+                  />
+                </div>
                 <span
-                  className="h-2 w-2 rounded-full"
-                  style={{ background: "var(--muted)" }}
-                />
-                <span
-                  className="h-2 w-2 rounded-full"
-                  style={{ background: "var(--muted)" }}
-                />
-                <span
-                  className="h-2 w-2 rounded-full"
-                  style={{ background: "var(--muted)" }}
-                />
+                  className="text-xs"
+                  style={{ color: "var(--muted)" }}
+                >
+                  {shot.label}
+                </span>
               </div>
 
               <div style={{ background: "var(--surface)" }}>
