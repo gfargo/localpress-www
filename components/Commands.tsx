@@ -53,11 +53,14 @@ const utilities = [
   { name: "config", desc: "Profiles + scalar values" },
   { name: "list", desc: "Browse media library" },
   { name: "show", desc: "Attachment metadata" },
-  { name: "stats", desc: "Cumulative processing stats" },
+  { name: "stats", desc: "Library health dashboard" },
   { name: "caption", desc: "AI alt-text via Ollama" },
-  { name: "resize", desc: "Resize + regen thumbnails" },
+  { name: "resize", desc: "Resize preserving ratio" },
+  { name: "regenerate", desc: "Rebuild WP thumbnails" },
   { name: "pull", desc: "Download to local disk" },
   { name: "push", desc: "Upload + replace-in-place" },
+  { name: "update", desc: "Self-update the binary" },
+  { name: "completions", desc: "Shell completions (bash/zsh/fish)" },
 ]
 
 const categoryColor: Record<string, string> = {
@@ -86,7 +89,7 @@ export function Commands() {
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            18 commands built for real workflows
+            21 commands built for real workflows
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
             From a single image to your entire library — every operation is local, idempotent, and
