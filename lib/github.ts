@@ -7,7 +7,7 @@
  */
 
 const REPO = "gfargo/localpress";
-const FALLBACK_VERSION = "1.6.0";
+const FALLBACK_VERSION = "1.8.0";
 
 let cached: { version: string; fetchedAt: number } | null = null;
 const CACHE_TTL_MS = 60 * 1000; // 1 minute (covers a full build)
