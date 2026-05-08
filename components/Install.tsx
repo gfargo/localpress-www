@@ -51,17 +51,17 @@ export function Install() {
               </div>
             </div>
 
-            {/* Binary download */}
+            {/* Archive download */}
             <div
               className="flex items-center justify-between gap-4 rounded-lg px-5 py-4"
               style={{ border: "1px solid var(--border)", background: "var(--raised)" }}
             >
               <div>
                 <p className="mb-0.5 text-sm font-medium" style={{ color: "var(--ink)" }}>
-                  Binary download
+                  Archive download
                 </p>
                 <p className="text-xs" style={{ color: "var(--body)" }}>
-                  Pre-built binaries for macOS (arm64, x64), Linux (arm64, x64), Windows (x64)
+                  Pre-built tarballs for macOS (arm64, x64), Linux (arm64, x64), Windows (x64). Requires Bun ≥ 1.1.
                 </p>
               </div>
               <a

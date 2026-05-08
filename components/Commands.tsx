@@ -59,7 +59,7 @@ const utilities = [
   { name: "regenerate", desc: "Rebuild WP thumbnails" },
   { name: "pull", desc: "Download to local disk" },
   { name: "push", desc: "Upload + replace-in-place" },
-  { name: "update", desc: "Self-update the binary" },
+  { name: "update", desc: "Self-update localpress" },
   { name: "completions", desc: "Shell completions (bash/zsh/fish)" },
 ]
 
