@@ -27,10 +27,10 @@ const featured = [
 
 const secondary = [
   {
-    name: "convert",
-    category: "Processing",
-    tagline: "JPEG → WebP → AVIF",
-    detail: "Batch format conversion tuned for every modern browser.",
+    name: "watch",
+    category: "Automation",
+    tagline: "Drop files. They appear in WordPress.",
+    detail: "Watch a local directory for new or changed images — auto-optimizes and pushes to WordPress continuously.",
   },
   {
     name: "edit",
@@ -55,6 +55,7 @@ const utilities = [
   { name: "show", desc: "Attachment metadata" },
   { name: "stats", desc: "Library health dashboard" },
   { name: "caption", desc: "AI alt-text via Ollama" },
+  { name: "convert", desc: "JPEG → WebP → AVIF" },
   { name: "resize", desc: "Resize preserving ratio" },
   { name: "regenerate", desc: "Rebuild WP thumbnails" },
   { name: "pull", desc: "Download to local disk" },
@@ -66,6 +67,7 @@ const utilities = [
 const categoryColor: Record<string, string> = {
   Processing: "var(--accent)",
   AI: "var(--accent)",
+  Automation: "var(--accent)",
   Discovery: "var(--warm)",
   "Round-trip": "var(--dim)",
 }
@@ -89,7 +91,7 @@ export function Commands() {
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            21 commands built for real workflows
+            22 commands built for real workflows
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
             From a single image to your entire library — every operation is local, idempotent, and

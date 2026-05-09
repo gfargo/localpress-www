@@ -48,9 +48,9 @@ export function Hero({ version }: { version: string }) {
           </h1>
 
           <p className="mb-10 max-w-2xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
-            Compress, convert, remove backgrounds, and round-trip with your real desktop editor —
-            then sync back to WordPress via REST. Your hardware does the work. No cloud SaaS. No
-            credits. No plugin required.
+            Compress, convert, remove backgrounds, watch directories for changes, and round-trip
+            with your real desktop editor — then sync back to WordPress via REST. Your hardware
+            does the work. No cloud SaaS. No credits. No plugin required.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
