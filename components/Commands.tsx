@@ -27,6 +27,12 @@ const featured = [
 
 const secondary = [
   {
+    name: "export / import",
+    category: "Migration",
+    tagline: "Backup, migrate, bulk-load.",
+    detail: "Export your entire library as a ZIP with metadata manifest. Import directories or ZIPs with optional optimization on upload.",
+  },
+  {
     name: "watch",
     category: "Automation",
     tagline: "Drop files. They appear in WordPress.",
@@ -58,6 +64,8 @@ const utilities = [
   { name: "convert", desc: "JPEG → WebP → AVIF" },
   { name: "resize", desc: "Resize preserving ratio" },
   { name: "regenerate", desc: "Rebuild WP thumbnails" },
+  { name: "export", desc: "Backup as ZIP or directory" },
+  { name: "import", desc: "Bulk upload with optimize" },
   { name: "pull", desc: "Download to local disk" },
   { name: "push", desc: "Upload + replace-in-place" },
   { name: "update", desc: "Self-update localpress" },
@@ -68,6 +76,7 @@ const categoryColor: Record<string, string> = {
   Processing: "var(--accent)",
   AI: "var(--accent)",
   Automation: "var(--accent)",
+  Migration: "var(--accent)",
   Discovery: "var(--warm)",
   "Round-trip": "var(--dim)",
 }
@@ -91,7 +100,7 @@ export function Commands() {
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            22 commands built for real workflows
+            24 commands built for real workflows
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
             From a single image to your entire library — every operation is local, idempotent, and
@@ -163,8 +172,8 @@ export function Commands() {
           ))}
         </div>
 
-        {/* Secondary — 3 supporting commands */}
-        <div className="grid gap-4 md:grid-cols-3 mb-8">
+        {/* Secondary — 4 supporting commands */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
           {secondary.map((cmd) => (
             <div
               key={cmd.name}

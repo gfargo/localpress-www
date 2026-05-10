@@ -56,7 +56,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "Commands-Reference",
     category: "Reference",
     order: 1,
-    description: "Complete documentation for all 18 CLI commands across 5 categories.",
+    description: "Complete documentation for all 24 CLI commands across 8 categories.",
   },
   {
     slug: "configuration",
