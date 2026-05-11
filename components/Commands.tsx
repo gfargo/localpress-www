@@ -4,8 +4,8 @@ const featured = [
     category: "Processing",
     tagline: "Compress without compromise",
     detail:
-      "sharp + jSquash WASM codecs. Set a quality floor, pick a format, preview in the browser with --preview, or process your entire library in one pass.",
-    example: "localpress optimize 123 --preview",
+      "sharp + jSquash WASM codecs. Set a quality floor, pick a format, use named profiles, preview in the browser with --preview, or process your entire library in one pass.",
+    example: "localpress optimize --unoptimized --profile hero --apply",
   },
   {
     name: "remove-bg",
@@ -60,7 +60,7 @@ const utilities = [
   { name: "list", desc: "Browse media library" },
   { name: "show", desc: "Attachment metadata" },
   { name: "stats", desc: "Library health dashboard" },
-  { name: "caption", desc: "AI alt-text via Ollama" },
+  { name: "caption", desc: "AI alt-text via Ollama (multilingual)" },
   { name: "convert", desc: "JPEG → WebP → AVIF" },
   { name: "resize", desc: "Resize preserving ratio" },
   { name: "regenerate", desc: "Rebuild WP thumbnails" },
