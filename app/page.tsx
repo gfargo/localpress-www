@@ -7,6 +7,7 @@ import { Comparison } from "@/components/Comparison";
 import { Mcp } from "@/components/Mcp";
 import { Skill } from "@/components/Skill";
 import { TimeMachine } from "@/components/TimeMachine";
+import { VisionAI } from "@/components/VisionAI";
 import { Install } from "@/components/Install";
 import { getLatestVersion } from "@/lib/github";
 
@@ -21,6 +22,7 @@ export default async function HomePage() {
       <Commands />
       <Audit />
       <Comparison />
+      <VisionAI />
       <TimeMachine />
       <Mcp />
       <Skill />

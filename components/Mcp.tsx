@@ -15,11 +15,29 @@ const config = `{
 const toolGroups = [
   {
     label: "Setup",
-    tools: ["sites_list", "sites_use", "sites_add", "doctor", "config_*"],
+    tools: [
+      "sites_list",
+      "sites_use",
+      "sites_add",
+      "sites_remove",
+      "doctor",
+      "config_*",
+    ],
   },
   {
     label: "Discovery",
-    tools: ["list", "show", "stats", "audit", "references"],
+    tools: ["list", "show", "stats", "audit", "references", "watch_status"],
+  },
+  {
+    label: "Vision AI",
+    tools: [
+      "caption",
+      "generate_title",
+      "generate_description",
+      "tag",
+      "classify",
+      "vision",
+    ],
   },
   {
     label: "Processing",
@@ -28,13 +46,24 @@ const toolGroups = [
       "convert",
       "resize",
       "remove_bg",
-      "caption",
       "update_metadata",
     ],
   },
   {
     label: "Library",
-    tools: ["pull", "push", "delete", "regenerate", "export", "import"],
+    tools: [
+      "pull",
+      "push",
+      "delete",
+      "rename",
+      "regenerate",
+      "export",
+      "import",
+    ],
+  },
+  {
+    label: "Time-machine",
+    tools: ["history_list", "history_show", "history_prune", "undo"],
   },
 ];
 
@@ -87,7 +116,7 @@ export function Mcp() {
               style={{ color: "var(--body)" }}
             >
               Drop one config block into Claude Desktop, Cursor, or Claude Code.
-              Get 26 typed tools and 4 resources — every feature of the CLI,
+              Get 33 typed tools and 4 resources — every feature of the CLI,
               with structured schemas. Same binary, new entrypoint. No daemon,
               no hosting, no separate config.
             </p>
@@ -142,10 +171,10 @@ export function Mcp() {
               color: "var(--dim)",
             }}
           >
-            26 tools · 4 resources
+            33 tools · 4 resources
           </div>
           <div
-            className="grid gap-px md:grid-cols-2 lg:grid-cols-4"
+            className="grid gap-px md:grid-cols-2 lg:grid-cols-3"
             style={{ background: "var(--wire)" }}
           >
             {toolGroups.map(({ label, tools }) => (
