@@ -6,6 +6,7 @@ import { Audit } from "@/components/Audit";
 import { Comparison } from "@/components/Comparison";
 import { Mcp } from "@/components/Mcp";
 import { Skill } from "@/components/Skill";
+import { TimeMachine } from "@/components/TimeMachine";
 import { Install } from "@/components/Install";
 import { getLatestVersion } from "@/lib/github";
 
@@ -20,6 +21,7 @@ export default async function HomePage() {
       <Commands />
       <Audit />
       <Comparison />
+      <TimeMachine />
       <Mcp />
       <Skill />
       <Install />

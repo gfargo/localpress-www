@@ -41,6 +41,8 @@ export const metadata: Metadata = {
     "model-context-protocol",
     "claude",
     "ai-agent",
+    "undo",
+    "time-machine",
   ],
   authors: [{ name: "Griffen Fargo", url: "https://github.com/gfargo" }],
   metadataBase: new URL("https://localpress.griffen.codes"),

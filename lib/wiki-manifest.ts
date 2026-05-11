@@ -59,12 +59,20 @@ export const wikiPages: WikiPage[] = [
     description: "Install Ollama and pull a vision model to enable local AI alt-text generation with the caption command.",
   },
   {
+    slug: "history-and-undo",
+    title: "History & Undo",
+    wikiPath: "History-And-Undo",
+    category: "Guides",
+    order: 6,
+    description: "Time-machine for destructive ops: every optimize/convert/resize/remove-bg/caption is snapshotted locally and reversible via `localpress undo`.",
+  },
+  {
     slug: "commands-reference",
     title: "Commands Reference",
     wikiPath: "Commands-Reference",
     category: "Reference",
     order: 1,
-    description: "Complete documentation for all 25 CLI commands across 9 categories, including the new mcp subcommand.",
+    description: "Complete documentation for all 27 CLI commands across 10 categories, including the time-machine `history` and `undo` commands.",
   },
   {
     slug: "configuration",
