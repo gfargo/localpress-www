@@ -23,7 +23,14 @@ const toolGroups = [
   },
   {
     label: "Processing",
-    tools: ["optimize", "convert", "resize", "remove_bg", "caption"],
+    tools: [
+      "optimize",
+      "convert",
+      "resize",
+      "remove_bg",
+      "caption",
+      "update_metadata",
+    ],
   },
   {
     label: "Library",
@@ -35,6 +42,7 @@ const resources = [
   "localpress://sites",
   "localpress://stats",
   "localpress://capabilities",
+  "localpress://history",
 ];
 
 export function Mcp() {
@@ -79,7 +87,7 @@ export function Mcp() {
               style={{ color: "var(--body)" }}
             >
               Drop one config block into Claude Desktop, Cursor, or Claude Code.
-              Get 20 typed tools and 3 resources — every feature of the CLI,
+              Get 25 typed tools and 4 resources — every feature of the CLI,
               with structured schemas. Same binary, new entrypoint. No daemon,
               no hosting, no separate config.
             </p>
@@ -134,7 +142,7 @@ export function Mcp() {
               color: "var(--dim)",
             }}
           >
-            20 tools · 3 resources
+            25 tools · 4 resources
           </div>
           <div
             className="grid gap-px md:grid-cols-2 lg:grid-cols-4"
