@@ -44,17 +44,21 @@ export function Skill() {
       <div className="container mx-auto px-4 py-24">
         <div className="mb-16">
           <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-            AI agent integration
+            Or — the markdown path
           </p>
           <h2
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            A skill, not a server
+            Composes with your{" "}
+            <span className="glow-accent" style={{ color: "var(--accent)" }}>
+              WordPress MCP.
+            </span>
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-            A markdown skill teaches your AI agent how to drive localPress — composing with whatever
-            WordPress MCP server you already have. No new protocol code, no versioning headaches.
+            If your agent already speaks to a WordPress MCP server, localPress ships a
+            markdown skill that teaches it the three-step pattern: discover via WP MCP,
+            process via localPress, verify via WP MCP. Works in any agent that can run a shell.
           </p>
         </div>
 

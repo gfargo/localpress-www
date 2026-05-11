@@ -27,19 +27,27 @@ export const wikiPages: WikiPage[] = [
     description: "Install localPress and connect your first WordPress site in minutes.",
   },
   {
+    slug: "mcp-setup",
+    title: "MCP Setup",
+    wikiPath: "MCP-Setup",
+    category: "Guides",
+    order: 2,
+    description: "Connect localPress to Claude Desktop, Cursor, or Claude Code via the first-party MCP server. 20 tools, 3 resources, one config block.",
+  },
+  {
     slug: "ai-agent-integration",
     title: "AI Agent Integration",
     wikiPath: "AI-Agent-Integration",
     category: "Guides",
-    order: 2,
-    description: "Use localPress with Claude Desktop, Cursor, and other AI agents via the companion skill.",
+    order: 3,
+    description: "Use localPress with Claude Desktop, Cursor, and other AI agents — via the first-party MCP server or the companion markdown skill.",
   },
   {
     slug: "wp-cli-ssh-setup",
     title: "WP-CLI SSH Setup",
     wikiPath: "WP-CLI-SSH-Setup",
     category: "Guides",
-    order: 3,
+    order: 4,
     description: "Configure SSH access to unlock replace-in-place, thumbnail regeneration, and full reference rewrites.",
   },
   {
@@ -47,7 +55,7 @@ export const wikiPages: WikiPage[] = [
     title: "Ollama Setup",
     wikiPath: "Ollama-Setup",
     category: "Guides",
-    order: 4,
+    order: 5,
     description: "Install Ollama and pull a vision model to enable local AI alt-text generation with the caption command.",
   },
   {
@@ -56,7 +64,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "Commands-Reference",
     category: "Reference",
     order: 1,
-    description: "Complete documentation for all 24 CLI commands across 8 categories.",
+    description: "Complete documentation for all 25 CLI commands across 9 categories, including the new mcp subcommand.",
   },
   {
     slug: "configuration",
