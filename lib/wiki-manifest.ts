@@ -72,7 +72,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "Commands-Reference",
     category: "Reference",
     order: 1,
-    description: "Complete documentation for all 27 CLI commands across 10 categories, including the time-machine `history` and `undo` commands.",
+    description: "Complete documentation for all 38 CLI commands across 12 categories, including posts CRUD, accessibility audit, and the time-machine `history` and `undo` commands.",
   },
   {
     slug: "configuration",

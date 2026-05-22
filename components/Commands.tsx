@@ -66,6 +66,8 @@ const utilities = [
   { name: "regenerate", desc: "Rebuild WP thumbnails" },
   { name: "export", desc: "Backup as ZIP or directory" },
   { name: "import", desc: "Bulk upload with optimize" },
+  { name: "posts", desc: "Content CRUD (posts/pages/CPT)" },
+  { name: "a11y", desc: "WCAG accessibility audit" },
   { name: "pull", desc: "Download to local disk" },
   { name: "push", desc: "Upload + replace-in-place" },
   { name: "update", desc: "Self-update localpress" },
@@ -100,7 +102,7 @@ export function Commands() {
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            24 commands built for real workflows
+            38 commands built for real workflows
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
             From a single image to your entire library — every operation is local, idempotent, and
