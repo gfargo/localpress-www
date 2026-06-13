@@ -34,7 +34,7 @@ export function Install() {
                   </span>
                 </div>
                 <a
-                  href="https://github.com/gfargo/homebrew-localpress"
+                  href="https://github.com/gfargo/homebrew-tap"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs transition-opacity hover:opacity-75"
@@ -46,7 +46,7 @@ export function Install() {
               <div className="flex items-center gap-3 px-5 py-4">
                 <span className="select-none text-xs font-medium" style={{ color: "var(--accent)" }}>$</span>
                 <code className="flex-1 text-sm" style={{ color: "var(--warm)" }}>
-                  brew install gfargo/localpress/localpress
+                  brew install gfargo/tap/localpress
                 </code>
               </div>
             </div>

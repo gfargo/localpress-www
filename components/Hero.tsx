@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Hero({ version }: { version: string }) {
   const [copied, setCopied] = useState(false);
-  const installCmd = "brew install gfargo/localpress/localpress";
+  const installCmd = "brew install gfargo/tap/localpress";
 
   function handleCopy() {
     navigator.clipboard.writeText(installCmd).then(() => {
