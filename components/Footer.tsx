@@ -22,7 +22,7 @@ export function Footer() {
               { href: "https://github.com/gfargo/localpress", label: "GitHub", external: true },
               { href: "https://github.com/gfargo/localpress/releases", label: "Releases", external: true },
               { href: "https://github.com/gfargo/localpress/issues", label: "Issues", external: true },
-              { href: "https://github.com/gfargo/homebrew-localpress", label: "Homebrew tap", external: true },
+              { href: "https://github.com/gfargo/homebrew-tap", label: "Homebrew tap", external: true },
             ].map(({ href, label, external }) => (
               <Link
                 key={href}
