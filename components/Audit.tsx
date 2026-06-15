@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { FadeIn } from "./FadeIn";
+
 const checks = [
   { flag: "--unoptimized", desc: "Images never processed by localPress" },
   { flag: "--large", desc: "Images over a size threshold (default 1 MB)" },
@@ -7,20 +10,6 @@ const checks = [
   { flag: "--broken-refs", desc: "Attachment URLs that return 404" },
   { flag: "--orphans", desc: "Files on disk with no DB record (requires WP-CLI)" },
 ];
-
-const sampleOutput = `$ localpress audit
-
-Audited 847 item(s) on 'production':
-
-  Unoptimized:              45 images
-  Oversized for display:     8 images
-  Missing alt text:         12 images
-  Duplicates:                3 pairs
-  Broken references:         2 attachments
-
-  Total findings: 70
-
-  → localpress optimize --unoptimized --apply`;
 
 export function Audit() {
   return (
@@ -40,6 +29,7 @@ export function Audit() {
 
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Flags */}
+          <FadeIn direction="right">
           <div className="space-y-1">
             {checks.map(({ flag, desc }) => (
               <div
@@ -59,9 +49,11 @@ export function Audit() {
               </div>
             ))}
           </div>
+          </FadeIn>
 
-          {/* Terminal output */}
-          <div className="overflow-hidden rounded-lg" style={{ border: "1px solid var(--border)" }}>
+          {/* Real screenshot of stats/audit output */}
+          <FadeIn delay={200} direction="left">
+          <div className="terminal-frame overflow-hidden rounded-lg" style={{ border: "1px solid var(--border)" }}>
             {/* Window chrome */}
             <div
               className="flex items-center gap-2 px-4 py-2.5"
@@ -72,46 +64,20 @@ export function Audit() {
                 <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
                 <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
               </div>
-              <span className="ml-2 text-xs" style={{ color: "var(--dim)" }}>bash</span>
+              <span className="ml-2 text-xs" style={{ color: "var(--dim)" }}>localpress stats</span>
             </div>
-            <pre
-              className="overflow-x-auto p-5 text-xs leading-relaxed"
-              style={{ background: "var(--bg)", color: "var(--warm)" }}
-            >
-              {sampleOutput.split("\n").map((line, i) => {
-                if (line.startsWith("$")) {
-                  return (
-                    <span key={i} style={{ color: "var(--accent)" }}>
-                      {line}
-                      {"\n"}
-                    </span>
-                  );
-                }
-                if (line.trimStart().startsWith("→")) {
-                  return (
-                    <span key={i} style={{ color: "var(--accent)" }}>
-                      {line}
-                      {"\n"}
-                    </span>
-                  );
-                }
-                if (line.trimStart().startsWith("Total")) {
-                  return (
-                    <span key={i} style={{ color: "var(--ink)" }}>
-                      {line}
-                      {"\n"}
-                    </span>
-                  );
-                }
-                return (
-                  <span key={i} style={{ color: "var(--body)" }}>
-                    {line}
-                    {"\n"}
-                  </span>
-                );
-              })}
-            </pre>
+            <div style={{ background: "#1e1e2e" }}>
+              <Image
+                src="/screenshots/ui-stats.png"
+                alt="localPress stats dashboard — cumulative savings, format breakdown, and recent operations"
+                width={1200}
+                height={600}
+                className="w-full h-auto"
+                loading="lazy"
+              />
+            </div>
           </div>
+          </FadeIn>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -100,25 +101,25 @@ export function Mcp() {
                 className="h-1.5 w-1.5 shrink-0 rounded-full"
                 style={{ background: "var(--accent)" }}
               />
-              New in v1.14 · MCP server
+              Agent-native
             </p>
             <h2
               className="font-display max-w-2xl text-3xl font-semibold italic leading-tight md:text-5xl"
               style={{ color: "var(--ink)" }}
             >
-              Now an{" "}
+              Built for{" "}
               <span className="glow-accent" style={{ color: "var(--accent)" }}>
-                MCP server.
+                AI agents.
               </span>
             </h2>
             <p
               className="mt-4 max-w-xl text-sm leading-relaxed md:text-base"
               style={{ color: "var(--body)" }}
             >
-              Drop one config block into Claude Desktop, Cursor, or Claude Code.
-              Get 33 typed tools and 4 resources — every feature of the CLI,
-              with structured schemas. Same binary, new entrypoint. No daemon,
-              no hosting, no separate config.
+              Drop one config block into Claude Desktop, Cursor, or any MCP client.
+              40+ typed tools cover every operation — from bulk optimization to
+              accessibility audits. Same binary, new entrypoint. Agents manage your
+              entire media library autonomously.
             </p>
           </div>
 
@@ -158,6 +159,51 @@ export function Mcp() {
           </div>
         </div>
 
+        {/* MCP agent demo GIF */}
+        <div className="mb-12">
+          <div
+            className="mx-auto max-w-3xl overflow-hidden rounded-xl"
+            style={{
+              border: "1px solid var(--border)",
+              boxShadow: "0 16px 48px -12px rgba(0,0,0,0.4)",
+            }}
+          >
+            <div
+              className="flex items-center gap-2 px-4 py-2.5"
+              style={{
+                background: "var(--raised)",
+                borderBottom: "1px solid var(--border)",
+              }}
+            >
+              <div className="flex gap-1.5" aria-hidden="true">
+                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
+                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
+                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
+              </div>
+              <span className="ml-2 text-xs" style={{ color: "var(--dim)" }}>
+                claude — localpress MCP
+              </span>
+            </div>
+            <div style={{ background: "#1e1e2e" }}>
+              <Image
+                src="/screenshots/demo-mcp-agent.gif"
+                alt="AI agent using localpress MCP tools — lists unoptimized images and compresses them to WebP automatically"
+                width={1000}
+                height={600}
+                className="w-full h-auto"
+                loading="lazy"
+                unoptimized
+              />
+            </div>
+          </div>
+          <p
+            className="mt-4 text-center text-xs"
+            style={{ color: "var(--dim)" }}
+          >
+            An AI agent finds and optimizes unoptimized images — no manual commands needed
+          </p>
+        </div>
+
         {/* Tool grid */}
         <div
           className="overflow-hidden rounded-lg"
@@ -171,7 +217,7 @@ export function Mcp() {
               color: "var(--dim)",
             }}
           >
-            33 tools · 4 resources
+            40+ tools · 4 resources
           </div>
           <div
             className="grid gap-px md:grid-cols-2 lg:grid-cols-3"
@@ -238,7 +284,7 @@ export function Mcp() {
           <Link
             href="/docs/mcp-setup"
             className="inline-flex items-center gap-2 rounded px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-85"
-            style={{ background: "var(--accent)", color: "#040404" }}
+            style={{ background: "var(--accent)", color: "var(--accent-btn-text)" }}
           >
             MCP Setup guide →
           </Link>

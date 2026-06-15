@@ -96,17 +96,17 @@ export function Commands() {
             className="mb-3 text-xs uppercase tracking-widest"
             style={{ color: "var(--dim)" }}
           >
-            Command reference
+            What&apos;s inside
           </p>
           <h2
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            38 commands built for real workflows
+            38 commands. One tool.
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
             From a single image to your entire library — every operation is local, idempotent, and
-            dry-run safe.
+            dry-run safe by default.
           </p>
         </div>
 

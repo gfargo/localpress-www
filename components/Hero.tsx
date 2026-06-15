@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { FadeIn } from "./FadeIn";
 
 export function Hero({ version }: { version: string }) {
   const [copied, setCopied] = useState(false);
@@ -26,18 +28,22 @@ export function Hero({ version }: { version: string }) {
         aria-hidden="true"
       />
 
-      <div className="relative container mx-auto px-4 py-28 md:py-36 lg:py-44">
-        <div className="mx-auto max-w-4xl">
+      <div className="relative container mx-auto px-4 py-16 md:py-20 lg:py-24">
+        <div className="mx-auto max-w-6xl grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+          <div>
+          <FadeIn delay={0}>
           <div
-            className="mb-8 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs"
+            className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs"
             style={{ border: "1px solid var(--border)", color: "var(--dim)" }}
           >
             <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "var(--accent)" }} />
             v{version} &nbsp;·&nbsp; MIT &nbsp;·&nbsp; macOS / Linux / Windows
           </div>
+          </FadeIn>
 
+          <FadeIn delay={100}>
           <h1
-            className="font-display mb-6 text-5xl font-semibold italic leading-[1.08] tracking-tight md:text-7xl lg:text-8xl"
+            className="font-display mb-5 text-4xl font-semibold italic leading-[1.08] tracking-tight md:text-5xl lg:text-6xl"
             style={{ color: "var(--ink)" }}
           >
             Local-first
@@ -46,20 +52,22 @@ export function Hero({ version }: { version: string }) {
               WordPress tooling.
             </span>
           </h1>
+          </FadeIn>
 
-          <p className="mb-10 max-w-2xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
-            Compress, convert, remove backgrounds, watch directories for changes, and round-trip
-            with your real desktop editor — then sync back to WordPress via REST. Your hardware
-            does the work. No cloud SaaS. No credits. No plugin required.
+          <FadeIn delay={200}>
+          <p className="mb-8 max-w-xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
+            Optimize images, manage posts, audit accessibility, and generate AI metadata for your WordPress media library — all from the terminal. Syncs to any WordPress site via the REST API.
           </p>
+          </FadeIn>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+          <FadeIn delay={300}>
+          <div className="flex flex-col gap-3">
             <div
-              className="flex min-w-0 flex-1 items-center gap-3 rounded-lg px-4 py-3 sm:max-w-md"
+              className="flex items-center gap-3 rounded-lg px-4 py-3"
               style={{ background: "var(--raised)", border: "1px solid var(--border)" }}
             >
               <span className="shrink-0 select-none text-xs font-medium" style={{ color: "var(--accent)" }}>$</span>
-              <code className="min-w-0 flex-1 truncate text-xs md:text-sm" style={{ color: "var(--warm)" }}>
+              <code className="flex-1 text-xs md:text-sm" style={{ color: "var(--warm)" }}>
                 {installCmd}
               </code>
               <button
@@ -76,10 +84,11 @@ export function Hero({ version }: { version: string }) {
               </button>
             </div>
 
+            <div className="flex gap-3">
             <Link
               href="/docs/getting-started"
               className="flex shrink-0 items-center justify-center rounded-lg px-5 py-3 text-sm font-medium transition-opacity hover:opacity-85"
-              style={{ background: "var(--accent)", color: "#040404" }}
+              style={{ background: "var(--accent)", color: "var(--accent-btn-text)" }}
             >
               Get started →
             </Link>
@@ -96,7 +105,50 @@ export function Hero({ version }: { version: string }) {
               </svg>
               GitHub
             </a>
+            </div>
           </div>
+          </FadeIn>
+          </div>
+
+          {/* Hero terminal GIF — side by side with text */}
+          <FadeIn delay={400} direction="left">
+          <div
+            className="terminal-frame overflow-hidden rounded-xl"
+            style={{
+              border: "1px solid var(--border)",
+              boxShadow: "0 32px 80px -16px rgba(0,0,0,0.6), 0 0 0 1px var(--wire)",
+            }}
+          >
+            {/* Window chrome */}
+            <div
+              className="flex items-center gap-2 px-4 py-2.5"
+              style={{
+                background: "var(--raised)",
+                borderBottom: "1px solid var(--border)",
+              }}
+            >
+              <div className="flex gap-1.5" aria-hidden="true">
+                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#ff5f57" }} />
+                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#febc2e" }} />
+                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#28c840" }} />
+              </div>
+              <span className="ml-2 text-xs" style={{ color: "var(--dim)" }}>
+                localpress list -i
+              </span>
+            </div>
+            <div style={{ background: "#1e1e2e" }}>
+              <Image
+                src="/screenshots/demo-browser-hero.gif"
+                alt="localPress interactive media browser — navigate items, view details, and configure optimization from the terminal"
+                width={1000}
+                height={750}
+                className="w-full h-auto"
+                priority
+                unoptimized
+              />
+            </div>
+          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

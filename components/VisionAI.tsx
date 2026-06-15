@@ -60,7 +60,7 @@ export function VisionAI() {
               className="h-1.5 w-1.5 shrink-0 rounded-full"
               style={{ background: "var(--accent)" }}
             />
-            New in v1.18 · Vision AI
+            Vision AI
           </p>
           <h2
             className="font-display max-w-3xl text-3xl font-semibold italic leading-tight md:text-5xl"
@@ -183,7 +183,7 @@ export function VisionAI() {
           <Link
             href="/docs/commands-reference#vision"
             className="inline-flex items-center gap-2 rounded px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-85"
-            style={{ background: "var(--accent)", color: "#040404" }}
+            style={{ background: "var(--accent)", color: "var(--accent-btn-text)" }}
           >
             Commands reference →
           </Link>

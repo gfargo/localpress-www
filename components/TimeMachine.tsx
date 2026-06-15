@@ -58,7 +58,7 @@ export function TimeMachine() {
               className="h-1.5 w-1.5 shrink-0 rounded-full"
               style={{ background: "var(--accent)" }}
             />
-            New in v1.15 · Time-machine
+            Time-machine
           </p>
           <h2
             className="font-display max-w-3xl text-3xl font-semibold italic leading-tight md:text-5xl"
@@ -156,7 +156,7 @@ export function TimeMachine() {
           <Link
             href="/docs/history-and-undo"
             className="inline-flex items-center gap-2 rounded px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-85"
-            style={{ background: "var(--accent)", color: "#040404" }}
+            style={{ background: "var(--accent)", color: "var(--accent-btn-text)" }}
           >
             History & Undo guide →
           </Link>

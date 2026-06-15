@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 const rows = [
   { feature: "Processing location", localpress: "Your laptop", ewww: "WP server", shortpixel: "Cloud", smush: "Cloud", imagify: "Cloud" },
   { feature: "Recurring cost", localpress: "$0", ewww: "$0 – $25/mo", shortpixel: "$4 – $10/mo", smush: "$3 – $13/mo", imagify: "$6 – $12/mo" },
@@ -19,20 +21,29 @@ const labels: Record<(typeof cols)[number], string> = {
 
 export function Comparison() {
   return (
-    <section id="compare" style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}>
-      <div className="container mx-auto px-4 py-24">
-        <div className="mb-16">
+    <section id="compare" style={{ background: "var(--surface)", borderBottom: "1px solid var(--wire)" }}>
+      <div className="container mx-auto px-4 py-20">
+        <FadeIn>
+        <div className="mb-12">
           <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-            Competitive positioning
+            The full picture
           </p>
           <h2
-            className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
+            className="font-display max-w-2xl text-3xl font-semibold italic leading-tight md:text-4xl"
             style={{ color: "var(--ink)" }}
           >
-            No one else runs on your machine
+            How localPress stacks up
           </h2>
+          <p
+            className="mt-4 max-w-xl text-sm leading-relaxed"
+            style={{ color: "var(--body)" }}
+          >
+            Feature-by-feature against the five most popular WordPress image optimization plugins.
+          </p>
         </div>
+        </FadeIn>
 
+        <FadeIn delay={150}>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-xs">
             <thead>
@@ -87,6 +98,7 @@ export function Comparison() {
             </tbody>
           </table>
         </div>
+        </FadeIn>
       </div>
     </section>
   );

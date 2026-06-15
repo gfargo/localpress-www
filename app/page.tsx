@@ -5,7 +5,6 @@ import { Commands } from "@/components/Commands";
 import { Audit } from "@/components/Audit";
 import { Comparison } from "@/components/Comparison";
 import { Mcp } from "@/components/Mcp";
-import { Skill } from "@/components/Skill";
 import { TimeMachine } from "@/components/TimeMachine";
 import { VisionAI } from "@/components/VisionAI";
 import { Install } from "@/components/Install";
@@ -17,15 +16,14 @@ export default async function HomePage() {
   return (
     <>
       <Hero version={version} />
-      <Showcase />
       <Features />
+      <Showcase />
       <Commands />
       <Audit />
-      <Comparison />
       <VisionAI />
       <TimeMachine />
       <Mcp />
-      <Skill />
+      <Comparison />
       <Install />
     </>
   );

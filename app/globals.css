@@ -16,6 +16,7 @@
   --accent: #00e599;
   --accent-subtle: rgba(0, 229, 153, 0.06);
   --accent-mid: rgba(0, 229, 153, 0.18);
+  --accent-btn-text: #002e14;
   --red-dim: #6b2222;
   color-scheme: dark;
 }
@@ -55,6 +56,7 @@
     --accent: #007848;
     --accent-subtle: rgba(0, 120, 72, 0.06);
     --accent-mid: rgba(0, 120, 72, 0.14);
+    --accent-btn-text: #ffffff;
     --red-dim: #8b1a1a;
     color-scheme: light;
   }
@@ -120,6 +122,69 @@ body {
 .hover-raised { transition: background-color 0.15s; }
 .hover-raised:hover { background-color: var(--raised); }
 .hover-wire:hover { border-color: var(--border) !important; }
+
+/* Terminal frame hover — subtle lift + glow */
+.terminal-frame {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+.terminal-frame:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 32px 80px -16px rgba(0,0,0,0.6), 0 0 0 1px var(--wire), 0 0 40px -10px var(--accent-subtle);
+}
+
+/* Section divider — gradient fade instead of hard line */
+.section-fade-top {
+  position: relative;
+}
+.section-fade-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--bg), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Angled section divider */
+.section-angle {
+  position: relative;
+}
+.section-angle::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--surface);
+  clip-path: polygon(0 0, 100% 40%, 100% 100%, 0 100%);
+  z-index: 1;
+}
+
+/* Ambient glow for feature cards on hover */
+.card-glow {
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card-glow:hover {
+  border-color: var(--muted) !important;
+  box-shadow: 0 8px 32px -8px rgba(0,0,0,0.4), 0 0 0 1px var(--border), inset 0 1px 0 var(--wire);
+}
+
+/* Subtle noise texture overlay */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar {
