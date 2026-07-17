@@ -22,12 +22,36 @@ const toolGroups = [
       "sites_add",
       "sites_remove",
       "doctor",
+      "health_check",
       "config_*",
     ],
   },
   {
     label: "Discovery",
-    tools: ["list", "show", "stats", "audit", "references", "watch_status"],
+    tools: [
+      "list",
+      "show",
+      "stats",
+      "audit",
+      "references",
+      "search_by_url",
+      "site_briefing",
+      "watch_status",
+    ],
+  },
+  {
+    label: "Content",
+    tools: [
+      "posts_list",
+      "posts_show",
+      "posts_create",
+      "posts_update",
+      "posts_delete",
+    ],
+  },
+  {
+    label: "Accessibility",
+    tools: ["a11y_audit"],
   },
   {
     label: "Vision AI",
@@ -116,9 +140,9 @@ export function Mcp() {
               className="mt-4 max-w-xl text-sm leading-relaxed md:text-base"
               style={{ color: "var(--body)" }}
             >
-              Drop one config block into Claude Desktop, Cursor, or any MCP client.
-              40+ typed tools cover every operation — from bulk optimization to
-              accessibility audits. Same binary, new entrypoint. Agents manage your
+              Drop one config block into Claude Desktop, Cursor, Kiro, or any MCP
+              client. 47+ typed tools cover every operation — from bulk optimization
+              to accessibility audits. Same binary, new entrypoint. Agents manage your
               entire media library autonomously.
             </p>
           </div>
@@ -217,7 +241,7 @@ export function Mcp() {
               color: "var(--dim)",
             }}
           >
-            40+ tools · 4 resources
+            47+ tools · 4 resources
           </div>
           <div
             className="grid gap-px md:grid-cols-2 lg:grid-cols-3"

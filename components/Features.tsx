@@ -22,8 +22,8 @@ const pillars = [
   {
     num: "04",
     title: "Built for AI agents",
-    pain: "No image optimizer integrates with Claude, Cursor, or MCP-native agents.",
-    fix: "First-party MCP server with 40+ typed tools. Drop one config block into your agent and it manages your entire media library autonomously.",
+    pain: "No image optimizer integrates with Claude, Cursor, Kiro, or MCP-native agents.",
+    fix: "First-party MCP server with 47+ typed tools. Drop one config block into your agent and it manages your entire media library autonomously.",
   },
 ];
 

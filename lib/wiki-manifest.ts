@@ -32,7 +32,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "MCP-Setup",
     category: "Guides",
     order: 2,
-    description: "Connect localPress to Claude Desktop, Cursor, or Claude Code via the first-party MCP server. 20 tools, 3 resources, one config block.",
+    description: "Connect localPress to Claude Desktop, Cursor, Claude Code, or Kiro via the first-party MCP server. 47+ tools, 4 resources, one config block.",
   },
   {
     slug: "ai-agent-integration",
