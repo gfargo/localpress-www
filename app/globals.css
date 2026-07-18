@@ -36,6 +36,7 @@
   --accent: #007848;
   --accent-subtle: rgba(0, 120, 72, 0.06);
   --accent-mid: rgba(0, 120, 72, 0.14);
+  --accent-btn-text: #ffffff;
   --red-dim: #8b1a1a;
   color-scheme: light;
 }

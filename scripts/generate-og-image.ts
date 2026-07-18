@@ -3,8 +3,8 @@
  * Run: bun .www/scripts/generate-og-image.ts
  *
  * Uses sharp to composite text onto a dark background that matches
- * the site's visual identity. Keeps the tagline in code so it
- * stays in sync with the rest of the site.
+ * the site's visual identity. Fetches the latest version from GitHub
+ * so the OG image stays in sync automatically on every build.
  */
 
 import sharp from 'sharp';
@@ -14,7 +14,37 @@ const root = join(import.meta.dir, '..');
 const WIDTH = 1200;
 const HEIGHT = 630;
 
+const REPO = 'gfargo/localpress';
+const FALLBACK_VERSION = '2.3.0';
+
+async function fetchLatestVersion(): Promise<string> {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`, {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        ...(process.env.GITHUB_TOKEN
+          ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+          : {}),
+      },
+    });
+
+    if (!res.ok) {
+      console.warn(`GitHub API returned ${res.status}, using fallback version`);
+      return FALLBACK_VERSION;
+    }
+
+    const data = (await res.json()) as { tag_name: string };
+    return data.tag_name.replace(/^v/, '');
+  } catch (err) {
+    console.warn('Failed to fetch latest release, using fallback:', err);
+    return FALLBACK_VERSION;
+  }
+}
+
 async function main() {
+  const version = await fetchLatestVersion();
+  console.log(`Using version: v${version}`);
+
   // Build the image as an SVG overlay rendered by sharp.
   // sharp can render a subset of SVG — enough for text + shapes.
   const svg = `
@@ -41,7 +71,7 @@ async function main() {
   <!-- Version badge -->
   <circle cx="88" cy="188" r="4" fill="#00e599"/>
   <text x="102" y="193" font-family="SF Mono, Menlo, Consolas, monospace" font-size="15" fill="#5a5a5a">
-    v1.3.1 · MIT · macOS / Linux / Windows
+    v${version} · MIT · macOS / Linux / Windows
   </text>
 
   <!-- Title line 1 -->
