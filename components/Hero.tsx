@@ -109,7 +109,7 @@ export function Hero({ version }: { version: string }) {
 
         {/* Hero GIF — framed */}
         <FadeIn delay={340}>
-          <div className="mt-16">
+          <div className="mt-16 max-w-5xl">
             <div className="mb-2 flex items-end justify-between">
               <span className="spec-label">fig.01 · interactive media browser</span>
               <span className="spec-label hidden sm:inline">$ localpress list -i</span>
@@ -135,9 +135,9 @@ export function Hero({ version }: { version: string }) {
               <div style={{ background: "#1e1e2e" }}>
                 <Image
                   src="/screenshots/demo-browser-hero.gif"
-                  alt="localPress interactive media browser — navigate items, view details, and configure optimization from the terminal"
-                  width={1400}
-                  height={875}
+                  alt="localPress interactive media browser: navigate items, view details, and configure optimization from the terminal"
+                  width={1000}
+                  height={750}
                   className="h-auto w-full"
                   priority
                   unoptimized
