@@ -12,13 +12,17 @@ export function DocsNavigation({
 
   return (
     <div
-      className="mt-12 pt-6 flex justify-between gap-4"
+      className="mt-12 grid grid-cols-2 gap-4 pt-6"
       style={{ borderTop: "1px solid var(--wire)" }}
     >
       {prev ? (
-        <Link href={`/docs/${prev.slug}`} className="group flex flex-col gap-0.5 text-xs max-w-xs">
-          <span className="uppercase tracking-widest" style={{ color: "var(--muted)" }}>← Previous</span>
-          <span className="text-sm font-medium transition-opacity group-hover:opacity-75" style={{ color: "var(--ink)" }}>
+        <Link
+          href={`/docs/${prev.slug}`}
+          className="hover-wire group flex flex-col gap-1 rounded-lg p-4 transition-colors"
+          style={{ border: "1px solid var(--wire)" }}
+        >
+          <span className="spec-label" style={{ color: "var(--muted)" }}>← Previous</span>
+          <span className="text-sm font-medium transition-colors group-hover:text-[color:var(--accent)]" style={{ color: "var(--ink)" }}>
             {prev.title}
           </span>
         </Link>
@@ -26,9 +30,13 @@ export function DocsNavigation({
         <div />
       )}
       {next ? (
-        <Link href={`/docs/${next.slug}`} className="group flex flex-col gap-0.5 text-xs text-right max-w-xs">
-          <span className="uppercase tracking-widest" style={{ color: "var(--muted)" }}>Next →</span>
-          <span className="text-sm font-medium transition-opacity group-hover:opacity-75" style={{ color: "var(--ink)" }}>
+        <Link
+          href={`/docs/${next.slug}`}
+          className="hover-wire group flex flex-col items-end gap-1 rounded-lg p-4 text-right transition-colors"
+          style={{ border: "1px solid var(--wire)" }}
+        >
+          <span className="spec-label" style={{ color: "var(--muted)" }}>Next →</span>
+          <span className="text-sm font-medium transition-colors group-hover:text-[color:var(--accent)]" style={{ color: "var(--ink)" }}>
             {next.title}
           </span>
         </Link>

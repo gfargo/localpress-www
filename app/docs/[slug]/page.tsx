@@ -49,20 +49,27 @@ export default async function DocPage({
     <article>
       {/* Page header */}
       <div className="mb-10" style={{ borderBottom: "1px solid var(--wire)", paddingBottom: "2rem" }}>
-        <p className="mb-2 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-          {page.category}
-        </p>
-        <h1 className="font-display text-3xl font-semibold italic mb-3" style={{ color: "var(--ink)" }}>
+        <nav
+          className="mb-4 flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-wider"
+          style={{ color: "var(--muted)" }}
+          aria-label="Breadcrumb"
+        >
+          <Link href="/docs" className="hover-ink">
+            docs
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span style={{ color: "var(--dim)" }}>{page.category}</span>
+        </nav>
+        <h1 className="font-display text-3xl md:text-4xl mb-3" style={{ color: "var(--ink)" }}>
           {title}
         </h1>
-        <p className="text-sm" style={{ color: "var(--body)" }}>{page.description}</p>
-        <div className="mt-4">
+        <p className="text-sm leading-relaxed" style={{ color: "var(--body)" }}>{page.description}</p>
+        <div className="mt-5">
           <a
             href={`https://github.com/gfargo/localpress/wiki/${page.wikiPath}/_edit`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs transition-opacity hover:opacity-75"
-            style={{ color: "var(--muted)" }}
+            className="font-mono text-xs hover-ink"
           >
             Edit on GitHub Wiki ↗
           </a>

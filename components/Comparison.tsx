@@ -21,83 +21,72 @@ const labels: Record<(typeof cols)[number], string> = {
 
 export function Comparison() {
   return (
-    <section id="compare" style={{ background: "var(--surface)", borderBottom: "1px solid var(--wire)" }}>
-      <div className="container mx-auto px-4 py-20">
+    <section id="compare" style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}>
+      <div className="container mx-auto px-4 py-24 md:py-28">
         <FadeIn>
-        <div className="mb-12">
-          <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-            The full picture
-          </p>
-          <h2
-            className="font-display max-w-2xl text-3xl font-semibold italic leading-tight md:text-4xl"
-            style={{ color: "var(--ink)" }}
-          >
-            How localPress stacks up
-          </h2>
-          <p
-            className="mt-4 max-w-xl text-sm leading-relaxed"
-            style={{ color: "var(--body)" }}
-          >
-            Feature-by-feature against the five most popular WordPress image optimization plugins.
-          </p>
-        </div>
+          <div className="mb-12 max-w-2xl">
+            <p className="spec-label mb-4">// the full picture</p>
+            <h2 className="font-display text-3xl leading-[1.02] md:text-[2.75rem]" style={{ color: "var(--ink)" }}>
+              How localPress stacks up.
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed" style={{ color: "var(--body)" }}>
+              Feature-by-feature against the five most popular WordPress image optimization plugins.
+            </p>
+          </div>
         </FadeIn>
 
-        <FadeIn delay={150}>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] border-collapse text-xs">
-            <thead>
-              <tr style={{ borderBottom: "1px solid var(--border)" }}>
-                <th className="py-3 pr-6 text-left font-medium" style={{ color: "var(--dim)" }}>
-                  Feature
-                </th>
-                {cols.map((col) => (
-                  <th
-                    key={col}
-                    className="px-4 py-3 text-left font-medium"
-                    style={{
-                      color: col === "localpress" ? "var(--accent)" : "var(--dim)",
-                      background: col === "localpress" ? "var(--accent-subtle)" : "transparent",
-                    }}
-                  >
-                    {labels[col]}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, i) => (
-                <tr
-                  key={row.feature}
-                  style={{ borderBottom: i < rows.length - 1 ? "1px solid var(--wire)" : "none" }}
-                >
-                  <td className="py-3 pr-6 font-medium" style={{ color: "var(--warm)" }}>
-                    {row.feature}
-                  </td>
+        <FadeIn delay={120}>
+          <div className="overflow-x-auto rounded-lg" style={{ border: "1px solid var(--border)" }}>
+            <table className="w-full min-w-[680px] border-collapse text-xs">
+              <thead>
+                <tr style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)" }}>
+                  <th className="px-5 py-4 text-left spec-label" style={{ fontWeight: 400 }}>Feature</th>
                   {cols.map((col) => {
-                    const val = row[col];
                     const isLp = col === "localpress";
-                    const isCheck = val === "✓" || val.startsWith("✓");
-                    const isCross = val === "✗";
                     return (
-                      <td
+                      <th
                         key={col}
-                        className="px-4 py-3"
+                        className="px-4 py-4 text-left font-mono text-[11px] uppercase tracking-[0.14em]"
                         style={{
-                          color: isCheck && isLp ? "var(--accent)" : isCross ? "var(--muted)" : isLp ? "var(--ink)" : "var(--body)",
+                          color: isLp ? "var(--accent)" : "var(--dim)",
                           background: isLp ? "var(--accent-subtle)" : "transparent",
-                          fontWeight: isLp ? 500 : 400,
+                          fontWeight: isLp ? 600 : 400,
                         }}
                       >
-                        {val}
-                      </td>
+                        {labels[col]}
+                      </th>
                     );
                   })}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {rows.map((row, i) => (
+                  <tr key={row.feature} style={{ borderBottom: i < rows.length - 1 ? "1px solid var(--wire)" : "none" }}>
+                    <td className="px-5 py-3.5 font-medium" style={{ color: "var(--warm)" }}>{row.feature}</td>
+                    {cols.map((col) => {
+                      const val = row[col];
+                      const isLp = col === "localpress";
+                      const isCheck = val === "✓" || val.startsWith("✓");
+                      const isCross = val === "✗";
+                      return (
+                        <td
+                          key={col}
+                          className="px-4 py-3.5 font-mono"
+                          style={{
+                            color: isCheck && isLp ? "var(--accent)" : isCross ? "var(--muted)" : isLp ? "var(--ink)" : "var(--body)",
+                            background: isLp ? "var(--accent-subtle)" : "transparent",
+                            fontWeight: isLp ? 500 : 400,
+                          }}
+                        >
+                          {val}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </FadeIn>
       </div>
     </section>

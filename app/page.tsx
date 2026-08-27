@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { Ticker } from "@/components/Ticker";
 import { Showcase } from "@/components/Showcase";
 import { Features } from "@/components/Features";
 import { Commands } from "@/components/Commands";
@@ -16,6 +17,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero version={version} />
+      <Ticker />
       <Features />
       <Showcase />
       <Commands />

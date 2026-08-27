@@ -5,16 +5,17 @@ export function Install() {
     <section style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}>
       <div className="container mx-auto px-4 py-24">
         <div className="mx-auto max-w-3xl">
-          <div className="mb-16 text-center">
-            <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-              Installation
-            </p>
+          <div className="mb-16">
+            <p className="spec-label mb-4">§ 09 / Installation</p>
             <h2
-              className="font-display text-3xl font-semibold italic md:text-4xl"
+              className="font-display text-4xl md:text-5xl"
               style={{ color: "var(--ink)" }}
             >
-              Three ways to install
+              Three ways in.
             </h2>
+            <p className="mt-3 max-w-md text-sm" style={{ color: "var(--body)" }}>
+              One binary. No runtime to babysit, no daemon in the background. Pick a lane and ship.
+            </p>
           </div>
 
           <div className="space-y-3">

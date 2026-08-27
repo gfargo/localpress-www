@@ -1,3 +1,5 @@
+import { FadeIn } from "./FadeIn";
+
 const featured = [
   {
     name: "optimize",
@@ -23,7 +25,7 @@ const featured = [
       "Unoptimized, oversized, missing alt text, display-size mismatch, duplicate images, broken refs, orphaned files — surfaced in seconds.",
     example: "localpress audit",
   },
-]
+];
 
 const secondary = [
   {
@@ -50,7 +52,7 @@ const secondary = [
     tagline: "Find every usage",
     detail: "Scan all posts for an attachment's URL. Rewrite them in-place after a rename or move.",
   },
-]
+];
 
 const utilities = [
   { name: "init", desc: "Interactive site wizard" },
@@ -60,181 +62,113 @@ const utilities = [
   { name: "list", desc: "Browse media library" },
   { name: "show", desc: "Attachment metadata" },
   { name: "stats", desc: "Library health dashboard" },
-  { name: "caption", desc: "AI alt-text via Ollama (multilingual)" },
+  { name: "caption", desc: "AI alt-text via Ollama" },
   { name: "convert", desc: "JPEG → WebP → AVIF" },
   { name: "resize", desc: "Resize preserving ratio" },
   { name: "regenerate", desc: "Rebuild WP thumbnails" },
-  { name: "export", desc: "Backup as ZIP or directory" },
+  { name: "export", desc: "Backup as ZIP or dir" },
   { name: "import", desc: "Bulk upload with optimize" },
-  { name: "posts", desc: "Content CRUD (posts/pages/CPT)" },
+  { name: "posts", desc: "Content CRUD" },
   { name: "a11y", desc: "WCAG accessibility audit" },
   { name: "pull", desc: "Download to local disk" },
   { name: "push", desc: "Upload + replace-in-place" },
   { name: "update", desc: "Self-update localpress" },
-  { name: "completions", desc: "Shell completions (bash/zsh/fish)" },
-]
-
-const categoryColor: Record<string, string> = {
-  Processing: "var(--accent)",
-  AI: "var(--accent)",
-  Automation: "var(--accent)",
-  Migration: "var(--accent)",
-  Discovery: "var(--warm)",
-  "Round-trip": "var(--dim)",
-}
+  { name: "completions", desc: "bash / zsh / fish" },
+];
 
 export function Commands() {
   return (
-    <section
-      id="commands"
-      style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}
-    >
-      <div className="container mx-auto px-4 py-24">
-        {/* Header */}
-        <div className="mb-16">
-          <p
-            className="mb-3 text-xs uppercase tracking-widest"
-            style={{ color: "var(--dim)" }}
-          >
-            What&apos;s inside
-          </p>
-          <h2
-            className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"
-            style={{ color: "var(--ink)" }}
-          >
-            38 commands. One tool.
-          </h2>
-          <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-            From a single image to your entire library — processing stays local, bulk writes are
-            dry-run safe, and shared concurrency keeps batches predictable.
-          </p>
-        </div>
-
-        {/* Featured — 3 marquee commands */}
-        <div className="grid gap-4 md:grid-cols-3 mb-4">
-          {featured.map((cmd) => (
+    <section id="commands" style={{ background: "var(--surface)", borderBottom: "1px solid var(--wire)" }}>
+      <div className="container mx-auto px-4 py-24 md:py-28">
+        <FadeIn>
+          <div className="mb-16 grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+            <div>
+              <p className="spec-label mb-4">// what&apos;s inside</p>
+              <h2 className="font-display text-3xl leading-[1.02] md:text-[2.75rem]" style={{ color: "var(--ink)" }}>
+                38 commands. One binary.
+              </h2>
+              <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
+                From a single image to your entire library — processing stays local, bulk writes are
+                dry-run safe, and shared concurrency keeps batches predictable.
+              </p>
+            </div>
             <div
-              key={cmd.name}
-              className="flex flex-col rounded-lg overflow-hidden"
-              style={{ border: "1px solid var(--border)", background: "var(--surface)" }}
+              className="hidden shrink-0 rounded-lg px-6 py-4 text-right md:block"
+              style={{ border: "1px solid var(--border)", background: "var(--bg)" }}
             >
-              {/* Card body */}
-              <div className="flex flex-col gap-3 p-6 flex-1">
-                {/* Category badge */}
-                <span
-                  className="self-start rounded-full px-2 py-0.5 text-xs uppercase tracking-widest"
-                  style={{
-                    border: `1px solid ${categoryColor[cmd.category]}`,
-                    color: categoryColor[cmd.category],
-                    opacity: 0.7,
-                  }}
-                >
-                  {cmd.category}
-                </span>
+              <div className="font-display text-4xl" style={{ color: "var(--accent)" }}>38</div>
+              <div className="spec-label mt-1">commands total</div>
+            </div>
+          </div>
+        </FadeIn>
 
-                {/* Command name */}
-                <div>
-                  <span
-                    className="mr-1.5 text-xs font-medium"
-                    style={{ color: "var(--muted)" }}
-                    aria-hidden="true"
-                  >
-                    $
-                  </span>
-                  <code
-                    className="text-xl font-medium tracking-tight"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    {cmd.name}
-                  </code>
-                </div>
-
-                {/* Tagline + detail */}
-                <p className="text-sm font-medium leading-snug" style={{ color: "var(--ink)" }}>
-                  {cmd.tagline}
-                </p>
-                <p className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>
-                  {cmd.detail}
-                </p>
-              </div>
-
-              {/* Example command */}
+        {/* Featured */}
+        <div className="mb-4 grid gap-4 md:grid-cols-3">
+          {featured.map((cmd, i) => (
+            <FadeIn key={cmd.name} delay={i * 90} className="min-w-0">
               <div
-                className="px-4 py-3 font-mono text-xs truncate"
-                style={{
-                  background: "var(--raised)",
-                  borderTop: "1px solid var(--wire)",
-                  color: "var(--dim)",
-                }}
+                className="card-glow flex h-full min-w-0 flex-col overflow-hidden rounded-lg"
+                style={{ border: "1px solid var(--border)", background: "var(--bg)" }}
               >
-                <span style={{ color: "var(--muted)" }}>$ </span>
-                <span style={{ color: "var(--warm)" }}>{cmd.example}</span>
+                <div className="flex min-w-0 flex-1 flex-col gap-3 p-6">
+                  <span className="spec-label" style={{ color: "var(--accent)" }}>{cmd.category}</span>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-mono text-sm" style={{ color: "var(--muted)" }} aria-hidden="true">$</span>
+                    <code className="font-mono text-xl font-medium tracking-tight" style={{ color: "var(--ink)" }}>
+                      {cmd.name}
+                    </code>
+                  </div>
+                  <p className="text-sm font-medium" style={{ color: "var(--ink)" }}>{cmd.tagline}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>{cmd.detail}</p>
+                </div>
+                <div
+                  className="overflow-x-auto whitespace-nowrap px-4 py-3 font-mono text-xs [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  style={{ background: "var(--raised)", borderTop: "1px solid var(--wire)" }}
+                >
+                  <span style={{ color: "var(--muted)" }}>$ </span>
+                  <span style={{ color: "var(--warm)" }}>{cmd.example}</span>
+                </div>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
 
-        {/* Secondary — 4 supporting commands */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
-          {secondary.map((cmd) => (
-            <div
-              key={cmd.name}
-              className="hover-raised rounded-lg p-5"
-              style={{
-                border: "1px solid var(--wire)",
-                background: "var(--surface)",
-              }}
-            >
-              <div className="flex items-start justify-between gap-4 mb-2">
-                <code
-                  className="text-sm font-medium"
-                  style={{ color: "var(--accent)" }}
-                >
-                  $ {cmd.name}
-                </code>
-                <span
-                  className="shrink-0 text-xs uppercase tracking-widest"
-                  style={{ color: "var(--muted)" }}
-                >
-                  {cmd.category}
-                </span>
+        {/* Secondary */}
+        <div className="mb-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {secondary.map((cmd, i) => (
+            <FadeIn key={cmd.name} delay={i * 70}>
+              <div
+                className="hover-raised h-full rounded-lg p-5"
+                style={{ border: "1px solid var(--wire)", background: "var(--bg)" }}
+              >
+                <div className="mb-2 flex items-start justify-between gap-3">
+                  <code className="font-mono text-sm font-medium" style={{ color: "var(--accent)" }}>{cmd.name}</code>
+                  <span className="spec-label shrink-0">{cmd.category}</span>
+                </div>
+                <p className="mb-1 text-xs font-medium" style={{ color: "var(--ink)" }}>{cmd.tagline}</p>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>{cmd.detail}</p>
               </div>
-              <p className="text-xs font-medium mb-1" style={{ color: "var(--ink)" }}>
-                {cmd.tagline}
-              </p>
-              <p className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>
-                {cmd.detail}
-              </p>
-            </div>
+            </FadeIn>
           ))}
         </div>
 
-        {/* Utility strip — 9 plumbing commands */}
-        <div
-          className="rounded-lg px-5 py-4"
-          style={{ border: "1px solid var(--wire)", background: "var(--surface)" }}
-        >
-          <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>
-            Also included
-          </p>
+        {/* Utility strip */}
+        <div className="rounded-lg px-5 py-5" style={{ border: "1px solid var(--wire)", background: "var(--bg)" }}>
+          <p className="spec-label mb-4">// also included</p>
           <div className="flex flex-wrap gap-2">
             {utilities.map((cmd) => (
               <div
                 key={cmd.name}
-                className="hover-wire group flex items-center gap-2 rounded px-3 py-1.5"
+                className="hover-wire flex items-center gap-2 rounded px-3 py-1.5"
                 style={{ border: "1px solid transparent", background: "var(--raised)" }}
               >
-                <code className="text-xs font-medium" style={{ color: "var(--accent)" }}>
-                  {cmd.name}
-                </code>
-                <span className="text-xs" style={{ color: "var(--dim)" }}>
-                  {cmd.desc}
-                </span>
+                <code className="font-mono text-xs font-medium" style={{ color: "var(--accent)" }}>{cmd.name}</code>
+                <span className="text-xs" style={{ color: "var(--dim)" }}>{cmd.desc}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

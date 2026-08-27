@@ -11,13 +11,13 @@ const pillars = [
     num: "02",
     title: "Works with any WordPress host",
     pain: "EWWW needs exec() and shell access that most shared hosts block.",
-    fix: "localPress talks to WordPress via Application Passwords (built into WP core since 5.6). Works on the cheapest shared host. Your laptop is the runtime.",
+    fix: "localPress talks to WordPress via Application Passwords, built into WP core since 5.6. Works on the cheapest shared host. Your laptop is the runtime.",
   },
   {
     num: "03",
     title: "Round-trip with real editors",
     pain: "No plugin lets you open an image in Photoshop, edit, and sync back.",
-    fix: "Open in GIMP, Photoshop, or Preview. Save. It syncs back automatically. The workflow designers actually want — no one else offers it.",
+    fix: "Open in GIMP, Photoshop, or Preview. Save. It syncs back automatically — the workflow designers actually want, and no one else offers.",
   },
   {
     num: "04",
@@ -29,54 +29,56 @@ const pillars = [
 
 export function Features() {
   return (
-    <section id="features" className="noise-overlay relative" style={{ background: "var(--surface)", borderBottom: "1px solid var(--wire)" }}>
-      <div className="container mx-auto px-4 py-20">
+    <section
+      id="features"
+      className="noise-overlay relative"
+      style={{ background: "var(--surface)", borderBottom: "1px solid var(--wire)" }}
+    >
+      <div className="container mx-auto px-4 py-24 md:py-28">
         <FadeIn>
-        <div className="mb-12">
-          <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-            Why localPress
-          </p>
-          <h2
-            className="font-display max-w-2xl text-3xl font-semibold italic leading-tight md:text-4xl"
-            style={{ color: "var(--ink)" }}
-          >
-            WordPress media plugins charge monthly for what your laptop does for free
-          </h2>
-          <p
-            className="mt-4 max-w-xl text-sm leading-relaxed"
-            style={{ color: "var(--body)" }}
-          >
-            Smush, ShortPixel, Imagify — they all send your images to a remote server and bill you per-image or per-month. localPress processes everything on your own machine and syncs results back via the REST API.
-          </p>
-        </div>
+          <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-end">
+            <div>
+              <p className="spec-label mb-4">// why localpress</p>
+              <h2 className="font-display text-3xl leading-[1.02] md:text-[2.75rem]" style={{ color: "var(--ink)" }}>
+                Plugins charge monthly for what your laptop does for free.
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
+              Smush, ShortPixel, Imagify — they all ship your images to a remote server and bill you
+              per-image or per-month. localPress processes everything on your own machine and syncs
+              results back via the REST API. Four reasons that changes everything.
+            </p>
+          </div>
         </FadeIn>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-16 border-t" style={{ borderColor: "var(--border)" }}>
           {pillars.map(({ num, title, pain, fix }, i) => (
-            <FadeIn key={num} delay={i * 100}>
-            <div
-              className="card-glow flex flex-col gap-3 rounded-lg p-6"
-              style={{ background: "var(--bg)", border: "1px solid var(--border)" }}
-            >
-              <div className="flex items-baseline gap-3">
+            <FadeIn key={num} delay={i * 80}>
+              <div
+                className="card-glow grid gap-5 border-b px-1 py-8 md:grid-cols-[auto_1fr_1.4fr] md:items-start md:gap-10 md:px-4"
+                style={{ borderColor: "var(--border)" }}
+              >
                 <span
-                  className="font-display text-2xl font-semibold italic leading-none"
-                  style={{ color: "var(--wire)" }}
+                  className="font-mono text-sm font-semibold"
+                  style={{ color: "var(--accent)" }}
                   aria-hidden="true"
                 >
                   {num}
                 </span>
-                <h3 className="text-sm font-medium" style={{ color: "var(--ink)" }}>
+                <h3 className="text-lg font-medium tracking-tight" style={{ color: "var(--ink)" }}>
                   {title}
                 </h3>
+                <div className="flex flex-col gap-3">
+                  <p className="flex gap-2 text-sm leading-relaxed" style={{ color: "var(--dim)" }}>
+                    <span className="mt-0.5 shrink-0 font-mono text-xs" style={{ color: "var(--red-dim)" }}>✗</span>
+                    <span>{pain}</span>
+                  </p>
+                  <p className="flex gap-2 text-sm leading-relaxed" style={{ color: "var(--body)" }}>
+                    <span className="mt-0.5 shrink-0 font-mono text-xs" style={{ color: "var(--accent)" }}>→</span>
+                    <span>{fix}</span>
+                  </p>
+                </div>
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: "var(--dim)" }}>
-                <span style={{ color: "var(--body)" }}>{pain}</span>
-              </p>
-              <p className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>
-                {fix}
-              </p>
-            </div>
             </FadeIn>
           ))}
         </div>

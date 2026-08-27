@@ -31,6 +31,23 @@ export function FadeIn({
     const el = ref.current;
     if (!el) return;
 
+    // Respect reduced-motion / missing IO: reveal immediately.
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced || typeof IntersectionObserver === "undefined") {
+      setIsVisible(true);
+      return;
+    }
+
+    // If the element is already within the viewport on mount, reveal right away.
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < vh && rect.bottom > 0) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -42,7 +59,14 @@ export function FadeIn({
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+
+    // Safety net: never leave content stuck at opacity 0.
+    const fallback = window.setTimeout(() => setIsVisible(true), 1200);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, [threshold]);
 
   const translateMap = {
