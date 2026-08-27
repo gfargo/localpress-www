@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { getWikiCategories } from "@/lib/wiki-manifest"
 
 const DOCS_DESCRIPTION =
-  "Learn how to install, configure, and master localPress — the local-compute WordPress media optimization CLI."
+  "Learn how to install, configure, and get the most out of localPress, the local-compute WordPress media optimization CLI."
 
 export const metadata: Metadata = {
   title: "Documentation",
@@ -35,8 +35,8 @@ export default function DocsPage() {
           Read the docs<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
         <p className="mt-4 max-w-xl text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-          Install, configure, and master localPress. Every page here is sourced from the GitHub
-          Wiki and baked in at build time — no stale copies, no drift.
+          Install, configure, and get the most out of localPress. Every page comes straight from the
+          GitHub Wiki, baked in at build time. No stale copies, no drift.
         </p>
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -182,7 +182,7 @@ export default function DocsPage() {
               Let your agent read the docs for you.
             </h2>
             <p className="mt-2 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-              localPress ships a first-party MCP server — 52 typed tools and 4 resources. Point
+              localPress ships a first-party MCP server with 52 typed tools and 4 resources. Point
               Claude Desktop, Cursor, or Kiro at it and let the model run the commands, read the
               reference, and optimize your library while you do something else.
             </p>

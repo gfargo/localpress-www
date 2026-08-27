@@ -31,7 +31,7 @@ export function Install() {
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
                   <span className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--accent)" }}>
-                    Homebrew — recommended
+                    Homebrew · recommended
                   </span>
                 </div>
                 <a
@@ -86,7 +86,7 @@ export function Install() {
                 style={{ borderBottom: "1px solid var(--border)" }}
               >
                 <span className="text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-                  From source — requires Bun ≥ 1.1
+                  From source · requires Bun ≥ 1.1
                 </span>
               </div>
               <div className="space-y-2 p-4">

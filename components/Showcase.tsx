@@ -4,7 +4,7 @@ import { FadeIn } from "./FadeIn";
 const hero = {
   src: "/screenshots/demo-browser-navigate.gif",
   alt: "localPress interactive media browser — navigate through your WordPress media library, open detail views, and manage images from the terminal",
-  caption: "Browse, inspect, and action your entire media library without leaving the terminal.",
+  caption: "Browse, inspect, and act on your media library without leaving the terminal.",
   label: "localpress list -i",
 };
 
@@ -12,7 +12,7 @@ const features = [
   {
     src: "/screenshots/ui-browser-optimize.png",
     alt: "localPress optimize settings — configure quality, format conversion, and replace-in-place from an inline overlay",
-    caption: "Inline optimize — quality, format, replace mode",
+    caption: "Inline optimize · quality, format, replace mode",
     label: "[o] optimize",
   },
   {
@@ -24,7 +24,7 @@ const features = [
   {
     src: "/screenshots/ui-browser-convert.png",
     alt: "localPress format conversion — pick WebP, AVIF, JPEG, or PNG from a keyboard-driven picker",
-    caption: "Format picker — WebP, AVIF, JPEG, PNG",
+    caption: "Format picker · WebP, AVIF, JPEG, PNG",
     label: "[c] convert",
   },
   {
@@ -39,13 +39,13 @@ const workflows = [
   {
     src: "/screenshots/demo-browser-actions-tour.gif",
     alt: "localPress actions tour — cycling through optimize, convert, and resize overlays",
-    caption: "Every action at your fingertips — optimize, convert, resize",
+    caption: "Every action one keystroke away · optimize, convert, resize",
     label: "actions tour",
   },
   {
     src: "/screenshots/demo-full-workflow.gif",
     alt: "localPress full workflow — doctor check, list media, view stats dashboard",
-    caption: "doctor → list → stats — the full localpress loop",
+    caption: "doctor → list → stats · the full localpress loop",
     label: "full workflow",
   },
 ];
@@ -84,7 +84,7 @@ export function Showcase() {
         {/* Hero GIF */}
         <FadeIn delay={120}>
           <div className="mb-3 flex items-end justify-between">
-            <span className="spec-label">fig.02 — interactive browser</span>
+            <span className="spec-label">fig.02 · interactive browser</span>
             <span className="spec-label flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
               live
@@ -104,7 +104,7 @@ export function Showcase() {
 
         {/* Overlay screenshots */}
         <FadeIn>
-          <p className="spec-label mb-6 mt-20">// keyboard-driven overlays — every action one keystroke away</p>
+          <p className="spec-label mb-6 mt-20">// keyboard-driven overlays · every action one keystroke away</p>
         </FadeIn>
         <div className="grid gap-4 md:grid-cols-2">
           {features.map((shot, i) => (

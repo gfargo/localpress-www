@@ -12,7 +12,7 @@ const steps = [
   {
     num: "02",
     title: "Process via localPress",
-    body: "The agent runs localPress commands locally — compress, convert, or remove backgrounds using your CPU/GPU.",
+    body: "The agent runs localPress commands locally to compress, convert, or remove backgrounds on your CPU/GPU.",
     cmd: "localpress optimize 123 124 125 --json",
   },
   {
@@ -44,7 +44,7 @@ export function Skill() {
       <div className="container mx-auto px-4 py-24">
         <div className="mb-16">
           <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: "var(--dim)" }}>
-            Or — the markdown path
+Or, the markdown path
           </p>
           <h2
             className="font-display max-w-xl text-3xl font-semibold italic leading-tight md:text-4xl"

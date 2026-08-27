@@ -48,7 +48,7 @@ export function Audit() {
           <FadeIn delay={160} direction="left">
             <div className="lg:sticky lg:top-24">
               <div className="mb-3 flex items-end justify-between">
-                <span className="spec-label">fig.03 — library health dashboard</span>
+                <span className="spec-label">fig.03 · library health dashboard</span>
                 <span className="spec-label hidden sm:inline">$ localpress stats</span>
               </div>
               <div className="terminal-frame overflow-hidden rounded-xl" style={{ border: "1px solid var(--border)" }}>
