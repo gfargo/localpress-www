@@ -1,25 +1,23 @@
 import type { Metadata } from "next";
-import { Fraunces, DM_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { themeInitScript } from "@/components/ThemeToggle";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
-  style: ["normal", "italic"],
-  axes: ["WONK", "opsz", "SOFT"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -91,7 +89,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="system"
-      className={`${fraunces.variable} ${dmMono.variable} h-full`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full bg-bg`}
       suppressHydrationWarning
     >
       <head>

@@ -17,62 +17,67 @@ export function Hero({ version }: { version: string }) {
   }
 
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}
-    >
-      <div className="dot-grid absolute inset-0 opacity-35" aria-hidden="true" />
+    <section className="relative overflow-hidden" style={{ background: "var(--bg)" }}>
+      <div className="dot-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{ background: "radial-gradient(circle, var(--accent-mid) 0%, transparent 70%)", opacity: 0.5 }}
+        className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full"
+        style={{ background: "radial-gradient(circle, var(--accent-mid) 0%, transparent 68%)", opacity: 0.7 }}
         aria-hidden="true"
       />
 
-      <div className="relative container mx-auto px-4 py-16 md:py-20 lg:py-24">
-        <div className="mx-auto max-w-6xl grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-          <div>
-          <FadeIn delay={0}>
+      <div className="relative container mx-auto px-4 pt-14 md:pt-20">
+        {/* Spec strip */}
+        <FadeIn>
           <div
-            className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs"
-            style={{ border: "1px solid var(--border)", color: "var(--dim)" }}
+            className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-lg px-4 py-2.5"
+            style={{ border: "1px solid var(--wire)", background: "var(--surface)" }}
           >
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "var(--accent)" }} />
-            v{version} &nbsp;·&nbsp; MIT &nbsp;·&nbsp; macOS / Linux / Windows
+            <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--ink)" }}>
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
+              v{version}
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--dim)" }}>MIT licensed</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--dim)" }}>macOS · Linux · Windows</span>
+            <span className="ml-auto hidden font-mono text-[11px] uppercase tracking-[0.16em] sm:inline" style={{ color: "var(--dim)" }}>
+              $0 / month · runs on your hardware
+            </span>
           </div>
-          </FadeIn>
+        </FadeIn>
 
-          <FadeIn delay={100}>
+        {/* Headline */}
+        <FadeIn delay={80}>
+          <p className="spec-label mb-5">// local-first wordpress tooling</p>
           <h1
-            className="font-display mb-5 text-4xl font-semibold italic leading-[1.08] tracking-tight md:text-5xl lg:text-6xl"
+            className="font-display max-w-5xl text-[2.75rem] leading-[0.98] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.5rem]"
             style={{ color: "var(--ink)" }}
           >
-            Local-first
+            Your machine does the work.
             <br />
-            <span className="glow-accent" style={{ color: "var(--accent)" }}>
-              WordPress tooling.
-            </span>
+            WordPress just{" "}
+            <span className="glow-accent">syncs.</span>
           </h1>
-          </FadeIn>
+        </FadeIn>
 
-          <FadeIn delay={200}>
-          <p className="mb-8 max-w-xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
-            Optimize images, manage posts, audit accessibility, and generate AI metadata for your WordPress media library — all from the terminal. Syncs to any WordPress site via the REST API.
+        <FadeIn delay={180}>
+          <p className="mt-7 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: "var(--body)" }}>
+            Optimize images, remove backgrounds, generate AI metadata, audit accessibility, and
+            reverse any change — all processed locally on your laptop, then pushed to any WordPress
+            site over the REST API. No cloud SaaS. No per-image credits. No plugin required.
           </p>
-          </FadeIn>
+        </FadeIn>
 
-          <FadeIn delay={300}>
-          <div className="flex flex-col gap-3">
+        {/* Install + CTAs */}
+        <FadeIn delay={260}>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <div
               className="flex items-center gap-3 rounded-lg px-4 py-3"
-              style={{ background: "var(--raised)", border: "1px solid var(--border)" }}
+              style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
             >
-              <span className="shrink-0 select-none text-xs font-medium" style={{ color: "var(--accent)" }}>$</span>
-              <code className="flex-1 text-xs md:text-sm" style={{ color: "var(--warm)" }}>
-                {installCmd}
-              </code>
+              <span className="shrink-0 select-none font-mono text-sm font-semibold" style={{ color: "var(--accent)" }}>$</span>
+              <code className="flex-1 font-mono text-sm" style={{ color: "var(--warm)" }}>{installCmd}</code>
               <button
                 onClick={handleCopy}
-                className="shrink-0 rounded px-2 py-0.5 text-xs transition-all"
+                className="shrink-0 rounded px-2 py-1 font-mono text-[11px] uppercase tracking-wider transition-all"
                 style={{
                   color: copied ? "var(--accent)" : "var(--dim)",
                   border: "1px solid var(--border)",
@@ -80,76 +85,59 @@ export function Hero({ version }: { version: string }) {
                 }}
                 aria-label="Copy install command"
               >
-                {copied ? "copied ✓" : "copy"}
+                {copied ? "copied" : "copy"}
               </button>
             </div>
 
-            <div className="flex gap-3">
             <Link
               href="/docs/getting-started"
-              className="flex shrink-0 items-center justify-center rounded-lg px-5 py-3 text-sm font-medium transition-opacity hover:opacity-85"
+              className="flex shrink-0 items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-opacity hover:opacity-85"
               style={{ background: "var(--accent)", color: "var(--accent-btn-text)" }}
             >
               Get started →
             </Link>
+          </div>
+        </FadeIn>
 
-            <a
-              href="https://github.com/gfargo/localpress"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex shrink-0 items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm transition-opacity hover:opacity-75"
-              style={{ border: "1px solid var(--border)", color: "var(--dim)" }}
-            >
-              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-              GitHub
-            </a>
+        {/* Hero GIF — framed */}
+        <FadeIn delay={340}>
+          <div className="mt-16">
+            <div className="mb-2 flex items-end justify-between">
+              <span className="spec-label">fig.01 — interactive media browser</span>
+              <span className="spec-label hidden sm:inline">$ localpress list -i</span>
             </div>
-          </div>
-          </FadeIn>
-          </div>
-
-          {/* Hero terminal GIF — side by side with text */}
-          <FadeIn delay={400} direction="left">
-          <div
-            className="terminal-frame overflow-hidden rounded-xl"
-            style={{
-              border: "1px solid var(--border)",
-              boxShadow: "0 32px 80px -16px rgba(0,0,0,0.6), 0 0 0 1px var(--wire)",
-            }}
-          >
-            {/* Window chrome */}
             <div
-              className="flex items-center gap-2 px-4 py-2.5"
+              className="terminal-frame overflow-hidden rounded-xl"
               style={{
-                background: "var(--raised)",
-                borderBottom: "1px solid var(--border)",
+                border: "1px solid var(--border)",
+                boxShadow: "0 40px 90px -40px rgba(20,19,15,0.35)",
               }}
             >
-              <div className="flex gap-1.5" aria-hidden="true">
-                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#ff5f57" }} />
-                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#febc2e" }} />
-                <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#28c840" }} />
+              <div
+                className="flex items-center gap-2 px-4 py-2.5"
+                style={{ background: "var(--raised)", borderBottom: "1px solid var(--border)" }}
+              >
+                <div className="flex gap-1.5" aria-hidden="true">
+                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
+                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
+                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
+                </div>
+                <span className="ml-2 font-mono text-xs" style={{ color: "var(--dim)" }}>localpress list -i</span>
               </div>
-              <span className="ml-2 text-xs" style={{ color: "var(--dim)" }}>
-                localpress list -i
-              </span>
-            </div>
-            <div style={{ background: "#1e1e2e" }}>
-              <Image
-                src="/screenshots/demo-browser-hero.gif"
-                alt="localPress interactive media browser — navigate items, view details, and configure optimization from the terminal"
-                width={1000}
-                height={750}
-                className="w-full h-auto"
-                priority
-                unoptimized
-              />
+              <div style={{ background: "#1e1e2e" }}>
+                <Image
+                  src="/screenshots/demo-browser-hero.gif"
+                  alt="localPress interactive media browser — navigate items, view details, and configure optimization from the terminal"
+                  width={1400}
+                  height={875}
+                  className="h-auto w-full"
+                  priority
+                  unoptimized
+                />
+              </div>
             </div>
           </div>
-          </FadeIn>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

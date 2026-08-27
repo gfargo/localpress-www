@@ -1,6 +1,5 @@
-"use client";
-
 import Link from "next/link";
+import { FadeIn } from "./FadeIn";
 
 const flow = [
   {
@@ -12,7 +11,7 @@ const flow = [
   {
     num: "02",
     title: "Browse history",
-    body: "Every command creates a session. Inspect snapshots with `history`, or drop into the interactive TUI to walk through them.",
+    body: "Every command creates a session. Inspect snapshots with history, or drop into the interactive TUI to walk through them.",
     cmd: "localpress history -i",
   },
   {
@@ -24,141 +23,71 @@ const flow = [
 ];
 
 const bullets = [
-  {
-    label: "Safe by default",
-    body: "Bulk undos dry-run unless you pass --apply, matching the rest of the CLI.",
-  },
-  {
-    label: "Bounded disk",
-    body: "Default 2 GB cap per site. Auto-prune on every op. Configurable via `history.maxSizeBytes`.",
-  },
-  {
-    label: "Idempotent-aware",
-    body: "Skipped ops (source unchanged) don't create snapshots. Re-running unchanged ops costs nothing.",
-  },
-  {
-    label: "MCP-first",
-    body: "Agents get `undo`, `history_list`, `history_show`, and `history_prune` as typed tools.",
-  },
+  { label: "Safe by default", body: "Bulk undos dry-run unless you pass --apply, matching the rest of the CLI." },
+  { label: "Bounded disk", body: "Default 2 GB cap per site. Auto-prune on every op. Configurable via history.maxSizeBytes." },
+  { label: "Idempotent-aware", body: "Skipped ops (source unchanged) don't create snapshots. Re-running unchanged ops costs nothing." },
+  { label: "MCP-first", body: "Agents get undo, history_list, history_show, and history_prune as typed tools." },
 ];
 
 export function TimeMachine() {
   return (
-    <section
-      id="time-machine"
-      style={{ background: "var(--surface)", borderBottom: "1px solid var(--wire)" }}
-    >
-      <div className="container mx-auto px-4 py-24">
-        <div className="mb-16">
-          <p
-            className="mb-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest"
-            style={{ color: "var(--dim)" }}
-          >
-            <span
-              className="h-1.5 w-1.5 shrink-0 rounded-full"
-              style={{ background: "var(--accent)" }}
-            />
-            Time-machine
-          </p>
-          <h2
-            className="font-display max-w-3xl text-3xl font-semibold italic leading-tight md:text-5xl"
-            style={{ color: "var(--ink)" }}
-          >
-            Reversible{" "}
-            <span className="glow-accent" style={{ color: "var(--accent)" }}>
-              by design.
-            </span>
-          </h2>
-          <p
-            className="mt-4 max-w-2xl text-sm leading-relaxed md:text-base"
-            style={{ color: "var(--body)" }}
-          >
-            Source and metadata changes write a snapshot before WordPress mutates.
-            Explicit keep-original runs skip needless snapshots; automatic REST fallbacks
-            retain recovery history. Wrong bulk optimize or bad cutout? Walk it back.
-          </p>
-        </div>
-
-        {/* Three-step workflow */}
-        <div
-          className="mb-12 overflow-hidden rounded-lg"
-          style={{ border: "1px solid var(--border)" }}
-        >
-          <div
-            className="px-5 py-3 text-xs uppercase tracking-widest"
-            style={{
-              background: "var(--raised)",
-              borderBottom: "1px solid var(--border)",
-              color: "var(--dim)",
-            }}
-          >
-            How it works
+    <section id="time-machine" style={{ background: "var(--bg)", borderBottom: "1px solid var(--wire)" }}>
+      <div className="container mx-auto px-4 py-24 md:py-28">
+        <FadeIn>
+          <div className="mb-14 max-w-3xl">
+            <p className="spec-label mb-4">// time-machine</p>
+            <h2 className="font-display text-3xl leading-[1.02] md:text-5xl" style={{ color: "var(--ink)" }}>
+              Reversible <span className="glow-accent">by design.</span>
+            </h2>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
+              Source and metadata changes write a snapshot before WordPress mutates. Explicit
+              keep-original runs skip needless snapshots; automatic REST fallbacks retain recovery
+              history. Wrong bulk optimize or bad cutout? Walk it back.
+            </p>
           </div>
-          <div
-            className="grid gap-px md:grid-cols-3"
-            style={{ background: "var(--wire)" }}
-          >
-            {flow.map(({ num, title, body, cmd }) => (
-              <div key={num} className="p-6" style={{ background: "var(--surface)" }}>
-                <div
-                  className="font-display mb-4 text-3xl font-semibold italic"
-                  style={{ color: "var(--wire)" }}
-                  aria-hidden="true"
-                >
-                  {num}
+        </FadeIn>
+
+        {/* Three-step flow */}
+        <div className="mb-12 grid gap-px overflow-hidden rounded-lg md:grid-cols-3" style={{ background: "var(--wire)", border: "1px solid var(--border)" }}>
+          {flow.map(({ num, title, body, cmd }, i) => (
+            <FadeIn key={num} delay={i * 90}>
+              <div className="flex h-full flex-col p-6" style={{ background: "var(--surface)" }}>
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="font-mono text-sm font-semibold" style={{ color: "var(--accent)" }}>{num}</span>
+                  <span className="h-px flex-1" style={{ background: "var(--wire)" }} />
                 </div>
-                <h3 className="mb-2 text-sm font-medium" style={{ color: "var(--ink)" }}>
-                  {title}
-                </h3>
-                <p
-                  className="mb-4 text-xs leading-relaxed"
-                  style={{ color: "var(--body)" }}
-                >
-                  {body}
-                </p>
+                <h3 className="mb-2 text-base font-medium" style={{ color: "var(--ink)" }}>{title}</h3>
+                <p className="mb-5 flex-1 text-xs leading-relaxed" style={{ color: "var(--body)" }}>{body}</p>
                 <code
-                  className="block rounded px-3 py-2 text-xs"
-                  style={{
-                    background: "var(--bg)",
-                    color: "var(--accent)",
-                    border: "1px solid var(--wire)",
-                  }}
+                  className="block rounded px-3 py-2 font-mono text-xs"
+                  style={{ background: "var(--bg)", color: "var(--accent)", border: "1px solid var(--wire)" }}
                 >
                   {cmd}
                 </code>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Properties grid */}
-        <div className="grid gap-4 md:grid-cols-2">
-          {bullets.map(({ label, body }) => (
-            <div
-              key={label}
-              className="rounded-lg p-5"
-              style={{ background: "var(--raised)", border: "1px solid var(--border)" }}
-            >
-              <div
-                className="mb-2 text-xs uppercase tracking-widest"
-                style={{ color: "var(--accent)" }}
-              >
-                {label}
-              </div>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-                {body}
-              </p>
-            </div>
+            </FadeIn>
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+        {/* Properties grid */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {bullets.map(({ label, body }, i) => (
+            <FadeIn key={label} delay={i * 70}>
+              <div className="h-full rounded-lg p-5" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+                <div className="spec-label mb-2" style={{ color: "var(--accent)" }}>{label}</div>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--body)" }}>{body}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <div className="mt-10">
           <Link
             href="/docs/history-and-undo"
-            className="inline-flex items-center gap-2 rounded px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-85"
+            className="inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-85"
             style={{ background: "var(--accent)", color: "var(--accent-btn-text)" }}
           >
-            History & Undo guide →
+            History &amp; Undo guide →
           </Link>
         </div>
       </div>
