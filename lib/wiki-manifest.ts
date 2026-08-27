@@ -32,7 +32,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "MCP-Setup",
     category: "Guides",
     order: 2,
-    description: "Connect localPress to Claude Desktop, Cursor, Claude Code, or Kiro via the first-party MCP server. 47+ tools, 4 resources, one config block.",
+    description: "Connect localPress to Claude Desktop, Cursor, Claude Code, or Kiro via the first-party MCP server. 52 tools, 4 resources, one config block.",
   },
   {
     slug: "ai-agent-integration",
@@ -64,7 +64,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "History-And-Undo",
     category: "Guides",
     order: 6,
-    description: "Time-machine for destructive ops: every optimize/convert/resize/remove-bg/caption is snapshotted locally and reversible via `localpress undo`.",
+    description: "Local recovery history for source and metadata changes, with dry-run-first bulk undo and explicit keep-original behavior.",
   },
   {
     slug: "commands-reference",

@@ -6,7 +6,7 @@ const flow = [
   {
     num: "01",
     title: "Run anything",
-    body: "Optimize, convert, resize, remove-bg, caption — bulk or single. Every destructive op writes a snapshot of the pre-change state to local storage before WordPress is touched.",
+    body: "Optimize, convert, resize, remove-bg, caption — bulk or single. Before a source or metadata write, localpress captures the state needed to recover it.",
     cmd: "localpress optimize --unoptimized --apply",
   },
   {
@@ -64,18 +64,18 @@ export function TimeMachine() {
             className="font-display max-w-3xl text-3xl font-semibold italic leading-tight md:text-5xl"
             style={{ color: "var(--ink)" }}
           >
-            Always{" "}
+            Reversible{" "}
             <span className="glow-accent" style={{ color: "var(--accent)" }}>
-              undoable.
+              by design.
             </span>
           </h2>
           <p
             className="mt-4 max-w-2xl text-sm leading-relaxed md:text-base"
             style={{ color: "var(--body)" }}
           >
-            Every destructive op writes a snapshot of the pre-change state before
-            WordPress mutates. Wrong bulk optimize? Bad background removal? An agent
-            that ran the wrong thing on 500 attachments? Walk it back with one command.
+            Source and metadata changes write a snapshot before WordPress mutates.
+            Explicit keep-original runs skip needless snapshots; automatic REST fallbacks
+            retain recovery history. Wrong bulk optimize or bad cutout? Walk it back.
           </p>
         </div>
 

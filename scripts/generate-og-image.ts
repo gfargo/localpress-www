@@ -15,7 +15,7 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 
 const REPO = 'gfargo/localpress';
-const FALLBACK_VERSION = '2.3.0';
+const FALLBACK_VERSION = '2.7.0';
 
 async function fetchLatestVersion(): Promise<string> {
   try {

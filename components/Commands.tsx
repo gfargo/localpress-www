@@ -12,7 +12,7 @@ const featured = [
     category: "AI",
     tagline: "Background removal. No cloud.",
     detail:
-      "Five ONNX models including state-of-the-art BiRefNet — all running on your hardware. Preview and tweak in the browser before applying.",
+      "Five checksum-verified ONNX models, including BiRefNet — all running on your hardware. Preview first; batch runs reuse one loaded model session.",
     example: "localpress remove-bg 847 --model birefnet-lite --preview",
   },
   {
@@ -36,7 +36,7 @@ const secondary = [
     name: "watch",
     category: "Automation",
     tagline: "Drop files. They appear in WordPress.",
-    detail: "Watch a local directory for new or changed images — auto-optimizes and pushes to WordPress continuously.",
+    detail: "Watch a local directory for new or changed images — including atomic editor saves — then optimize and push continuously.",
   },
   {
     name: "edit",
@@ -105,8 +105,8 @@ export function Commands() {
             38 commands. One tool.
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-            From a single image to your entire library — every operation is local, idempotent, and
-            dry-run safe by default.
+            From a single image to your entire library — processing stays local, bulk writes are
+            dry-run safe, and shared concurrency keeps batches predictable.
           </p>
         </div>
 

@@ -141,7 +141,7 @@ export function Mcp() {
               style={{ color: "var(--body)" }}
             >
               Drop one config block into Claude Desktop, Cursor, Kiro, or any MCP
-              client. 47+ typed tools cover every operation — from bulk optimization
+              client. 52 typed tools cover every operation — from bulk optimization
               to accessibility audits. Same binary, new entrypoint. Agents manage your
               entire media library autonomously.
             </p>
@@ -241,7 +241,7 @@ export function Mcp() {
               color: "var(--dim)",
             }}
           >
-            47+ tools · 4 resources
+            52 tools · 4 resources
           </div>
           <div
             className="grid gap-px md:grid-cols-2 lg:grid-cols-3"

@@ -5,7 +5,7 @@ const pillars = [
     num: "01",
     title: "Your hardware does the work",
     pain: "Cloud plugins charge $4–13/month for compute your laptop does for free.",
-    fix: "State-of-the-art BiRefNet runs background removal on your M-series Mac in 1.5 seconds. ShortPixel charges 1 credit per image. You do the math.",
+    fix: "Run BiRefNet, ISNet, or lightweight U2-Net models locally. Downloads are pinned and checksum-verified, then one loaded session is reused across the batch.",
   },
   {
     num: "02",
@@ -23,7 +23,7 @@ const pillars = [
     num: "04",
     title: "Built for AI agents",
     pain: "No image optimizer integrates with Claude, Cursor, Kiro, or MCP-native agents.",
-    fix: "First-party MCP server with 47+ typed tools. Drop one config block into your agent and it manages your entire media library autonomously.",
+    fix: "First-party MCP server with 52 typed tools. Drop one config block into your agent and it manages your entire media library autonomously.",
   },
 ];
 
