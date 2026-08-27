@@ -105,12 +105,12 @@ export function Commands() {
         {/* Featured */}
         <div className="mb-4 grid gap-4 md:grid-cols-3">
           {featured.map((cmd, i) => (
-            <FadeIn key={cmd.name} delay={i * 90}>
+            <FadeIn key={cmd.name} delay={i * 90} className="min-w-0">
               <div
-                className="card-glow flex h-full flex-col overflow-hidden rounded-lg"
+                className="card-glow flex h-full min-w-0 flex-col overflow-hidden rounded-lg"
                 style={{ border: "1px solid var(--border)", background: "var(--bg)" }}
               >
-                <div className="flex flex-1 flex-col gap-3 p-6">
+                <div className="flex min-w-0 flex-1 flex-col gap-3 p-6">
                   <span className="spec-label" style={{ color: "var(--accent)" }}>{cmd.category}</span>
                   <div className="flex items-baseline gap-1.5">
                     <span className="font-mono text-sm" style={{ color: "var(--muted)" }} aria-hidden="true">$</span>
@@ -122,7 +122,7 @@ export function Commands() {
                   <p className="text-xs leading-relaxed" style={{ color: "var(--body)" }}>{cmd.detail}</p>
                 </div>
                 <div
-                  className="truncate px-4 py-3 font-mono text-xs"
+                  className="overflow-x-auto whitespace-nowrap px-4 py-3 font-mono text-xs [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                   style={{ background: "var(--raised)", borderTop: "1px solid var(--wire)" }}
                 >
                   <span style={{ color: "var(--muted)" }}>$ </span>

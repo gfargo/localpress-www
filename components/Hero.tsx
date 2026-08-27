@@ -28,20 +28,28 @@ export function Hero({ version }: { version: string }) {
       <div className="relative container mx-auto px-4 pt-14 md:pt-20">
         {/* Spec strip */}
         <FadeIn>
-          <div
-            className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-lg px-4 py-2.5"
+          <dl
+            className="mb-10 grid grid-cols-2 overflow-hidden rounded-lg sm:flex sm:flex-wrap sm:items-stretch"
             style={{ border: "1px solid var(--wire)", background: "var(--surface)" }}
           >
-            <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--ink)" }}>
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
-              v{version}
-            </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--dim)" }}>MIT licensed</span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--dim)" }}>macOS · Linux · Windows</span>
-            <span className="ml-auto hidden font-mono text-[11px] uppercase tracking-[0.16em] sm:inline" style={{ color: "var(--dim)" }}>
-              $0 / month · runs on your hardware
-            </span>
-          </div>
+            <div className="flex items-center gap-2 border-b border-r px-4 py-2.5 sm:border-b-0 sm:border-r" style={{ borderColor: "var(--wire)" }}>
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "var(--accent)" }} />
+              <dt className="sr-only">Version</dt>
+              <dd className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--ink)" }}>v{version}</dd>
+            </div>
+            <div className="flex items-center border-b px-4 py-2.5 sm:border-b-0 sm:border-r" style={{ borderColor: "var(--wire)" }}>
+              <dt className="sr-only">License</dt>
+              <dd className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--dim)" }}>MIT licensed</dd>
+            </div>
+            <div className="flex items-center border-r px-4 py-2.5 sm:border-r" style={{ borderColor: "var(--wire)" }}>
+              <dt className="sr-only">Platforms</dt>
+              <dd className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--dim)" }}>macOS · Linux · Win</dd>
+            </div>
+            <div className="flex items-center px-4 py-2.5">
+              <dt className="sr-only">Cost</dt>
+              <dd className="font-mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--dim)" }}>$0 / month</dd>
+            </div>
+          </dl>
         </FadeIn>
 
         {/* Headline */}
