@@ -5,6 +5,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { themeInitScript } from "@/components/ThemeToggle";
+import { DocsSearch } from "@/components/docs/DocsSearch";
+import { wikiPages } from "@/lib/wiki-manifest";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -99,6 +101,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <DocsSearch pages={wikiPages} />
         <Analytics />
       </body>
     </html>

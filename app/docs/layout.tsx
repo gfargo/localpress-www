@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
-import { getWikiCategories, wikiPages } from "@/lib/wiki-manifest"
+import { getWikiCategories } from "@/lib/wiki-manifest"
 import { DocsSidebar } from "@/components/docs/DocsSidebar"
 import { DocsMobileNav } from "@/components/docs/DocsMobileNav"
-import { DocsSearch } from "@/components/docs/DocsSearch"
 
 export const metadata: Metadata = {
   title: {
@@ -19,7 +18,6 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
       className="min-h-screen"
       style={{ background: "var(--bg)", borderTop: "1px solid var(--wire)" }}
     >
-      <DocsSearch pages={wikiPages} />
       <DocsMobileNav categories={categories} />
       <div className="container mx-auto max-w-6xl px-4">
         <div className="flex gap-10 py-12 lg:py-16">

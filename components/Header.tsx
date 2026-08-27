@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
+import { openDocsSearch } from "./docs/DocsSearch";
 
 const navLinks = [
   { href: "/#features", label: "why" },
@@ -60,6 +61,25 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={openDocsSearch}
+            aria-label="Search documentation"
+            className="hidden items-center gap-2 rounded-md py-1.5 pl-2.5 pr-2 transition-colors hover-wire md:flex"
+            style={{ border: "1px solid var(--border)", color: "var(--muted)" }}
+          >
+            <svg className="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em]">Search</span>
+            <kbd
+              className="rounded px-1.5 py-0.5 font-mono text-[0.625rem]"
+              style={{ background: "var(--raised)", border: "1px solid var(--wire)", color: "var(--dim)" }}
+            >
+              ⌘K
+            </kbd>
+          </button>
           <ThemeToggle />
           <a
             href="https://github.com/gfargo/localpress"
@@ -112,6 +132,21 @@ export function Header() {
           style={{ borderTop: "1px solid var(--wire)", background: "var(--bg)" }}
         >
           <nav className="container mx-auto flex flex-col px-4 py-3" aria-label="Mobile navigation">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openDocsSearch();
+              }}
+              className="mb-2 flex items-center gap-2 rounded-md px-3 py-2.5"
+              style={{ border: "1px solid var(--border)", background: "var(--surface)", color: "var(--muted)" }}
+            >
+              <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em]">Search docs</span>
+            </button>
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
