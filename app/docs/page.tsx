@@ -2,10 +2,19 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { getWikiCategories } from "@/lib/wiki-manifest"
 
+const DOCS_DESCRIPTION =
+  "Learn how to install, configure, and master localPress — the local-compute WordPress media optimization CLI."
+
 export const metadata: Metadata = {
   title: "Documentation",
-  description:
-    "Learn how to install, configure, and master localPress — the local-compute WordPress media optimization CLI.",
+  description: DOCS_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    title: "Documentation — localPress",
+    description: DOCS_DESCRIPTION,
+    url: "https://localpress.griffen.codes/docs",
+  },
+  alternates: { canonical: "/docs" },
 }
 
 const categoryCode: Record<string, string> = {

@@ -2,6 +2,7 @@ import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import Link from "next/link"
 import type { Components } from "react-markdown"
+import { CodeBlock, AnchorHeading } from "@/components/docs/MarkdownParts"
 
 const components: Components = {
   h1: ({ children }) => (
@@ -9,19 +10,8 @@ const components: Components = {
       {children}
     </h1>
   ),
-  h2: ({ children }) => (
-    <h2
-      className="font-display text-2xl mt-10 mb-4 pb-2"
-      style={{ color: "var(--ink)", borderBottom: "1px solid var(--wire)" }}
-    >
-      {children}
-    </h2>
-  ),
-  h3: ({ children }) => (
-    <h3 className="font-display text-lg mt-7 mb-2" style={{ color: "var(--ink)" }}>
-      {children}
-    </h3>
-  ),
+  h2: ({ children }) => <AnchorHeading level={2}>{children}</AnchorHeading>,
+  h3: ({ children }) => <AnchorHeading level={3}>{children}</AnchorHeading>,
   h4: ({ children }) => (
     <h4 className="font-mono text-xs font-medium mt-5 mb-1 uppercase tracking-wider" style={{ color: "var(--dim)" }}>
       {children}
@@ -46,14 +36,7 @@ const components: Components = {
       </a>
     )
   },
-  pre: ({ children }) => (
-    <pre
-      className="overflow-x-auto rounded-lg p-4 mb-4 text-xs leading-6"
-      style={{ background: "var(--raised)", border: "1px solid var(--border)" }}
-    >
-      {children}
-    </pre>
-  ),
+  pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
   code: ({ className, children }) => {
     const isBlock = !!className
     if (isBlock) {

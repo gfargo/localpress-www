@@ -3,12 +3,31 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { WikiCategory } from "@/lib/wiki-manifest"
+import { openDocsSearch } from "@/components/docs/DocsSearch"
 
 export function DocsSidebar({ categories }: { categories: WikiCategory[] }) {
   const pathname = usePathname()
 
   return (
     <nav aria-label="Documentation navigation">
+      <button
+        type="button"
+        onClick={openDocsSearch}
+        className="mb-5 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-xs transition-colors hover-wire"
+        style={{ border: "1px solid var(--wire)", background: "var(--surface)", color: "var(--muted)" }}
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="shrink-0">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <span className="flex-1">Search docs...</span>
+        <kbd
+          className="rounded px-1.5 py-0.5 font-mono text-[0.625rem]"
+          style={{ background: "var(--raised)", border: "1px solid var(--wire)", color: "var(--dim)" }}
+        >
+          ⌘K
+        </kbd>
+      </button>
       <div className="mb-6 flex items-center gap-2">
         <Link href="/docs" className="spec-label hover-ink">
           ← index

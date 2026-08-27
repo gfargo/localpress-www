@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { WikiCategory } from "@/lib/wiki-manifest"
+import { openDocsSearch } from "@/components/docs/DocsSearch"
 
 export function DocsMobileNav({ categories }: { categories: WikiCategory[] }) {
   const pathname = usePathname()
@@ -18,39 +19,53 @@ export function DocsMobileNav({ categories }: { categories: WikiCategory[] }) {
       className="lg:hidden"
       style={{ borderBottom: "1px solid var(--wire)" }}
     >
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        className="flex w-full items-center justify-between px-4 py-3 text-xs"
-        style={{ background: "var(--raised)", color: "var(--body)" }}
-        aria-expanded={open}
-        aria-controls="mobile-docs-nav"
-      >
-        <span className="flex items-center gap-2">
-          <span className="font-mono text-[0.6875rem]" style={{ color: "var(--accent)" }}>
-            §
-          </span>
-          <span className="font-medium" style={{ color: "var(--ink)" }}>
-            {currentPage ? currentPage.title : "Documentation"}
-          </span>
-        </span>
-        <svg
-          className="h-4 w-4 shrink-0 transition-transform"
-          style={{
-            color: "var(--muted)",
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
-          }}
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
+      <div className="flex items-stretch" style={{ background: "var(--raised)" }}>
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          className="flex flex-1 items-center justify-between px-4 py-3 text-xs"
+          style={{ color: "var(--body)" }}
+          aria-expanded={open}
+          aria-controls="mobile-docs-nav"
         >
-          <path
-            fillRule="evenodd"
-            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
+          <span className="flex items-center gap-2">
+            <span className="font-mono text-[0.6875rem]" style={{ color: "var(--accent)" }}>
+              §
+            </span>
+            <span className="font-medium" style={{ color: "var(--ink)" }}>
+              {currentPage ? currentPage.title : "Documentation"}
+            </span>
+          </span>
+          <svg
+            className="h-4 w-4 shrink-0 transition-transform"
+            style={{
+              color: "var(--muted)",
+              transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            }}
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          onClick={openDocsSearch}
+          aria-label="Search docs"
+          className="flex items-center justify-center px-4"
+          style={{ color: "var(--body)", borderLeft: "1px solid var(--wire)" }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </button>
+      </div>
 
       {open && (
         <nav
