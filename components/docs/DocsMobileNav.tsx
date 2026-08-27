@@ -26,8 +26,13 @@ export function DocsMobileNav({ categories }: { categories: WikiCategory[] }) {
         aria-expanded={open}
         aria-controls="mobile-docs-nav"
       >
-        <span style={{ color: "var(--dim)" }}>
-          {currentPage ? currentPage.title : "Documentation"}
+        <span className="flex items-center gap-2">
+          <span className="font-mono text-[0.6875rem]" style={{ color: "var(--accent)" }}>
+            §
+          </span>
+          <span className="font-medium" style={{ color: "var(--ink)" }}>
+            {currentPage ? currentPage.title : "Documentation"}
+          </span>
         </span>
         <svg
           className="h-4 w-4 shrink-0 transition-transform"
@@ -57,18 +62,17 @@ export function DocsMobileNav({ categories }: { categories: WikiCategory[] }) {
             <Link
               href="/docs"
               onClick={() => setOpen(false)}
-              className="mb-4 block text-xs uppercase tracking-widest transition-opacity hover:opacity-75"
-              style={{ color: "var(--dim)" }}
+              className="spec-label mb-4 block hover-ink"
             >
-              ← All docs
+              ← index
             </Link>
             {categories.map(({ name, pages }) => (
-              <div key={name} className="mb-4">
-                <div
-                  className="mb-1 px-2 text-xs uppercase tracking-widest"
-                  style={{ color: "var(--muted)" }}
-                >
-                  {name}
+              <div key={name} className="mb-5">
+                <div className="mb-1.5 flex items-center gap-2 px-2">
+                  <span className="spec-label" style={{ color: "var(--muted)" }}>
+                    {name}
+                  </span>
+                  <span className="rule flex-1" aria-hidden="true" />
                 </div>
                 <ul className="space-y-0.5">
                   {pages.map((page) => {

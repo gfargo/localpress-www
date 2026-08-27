@@ -5,25 +5,25 @@ import type { Components } from "react-markdown"
 
 const components: Components = {
   h1: ({ children }) => (
-    <h1 className="font-display text-3xl font-semibold italic mt-8 mb-4 first:mt-0" style={{ color: "var(--ink)" }}>
+    <h1 className="font-display text-3xl mt-8 mb-4 first:mt-0" style={{ color: "var(--ink)" }}>
       {children}
     </h1>
   ),
   h2: ({ children }) => (
     <h2
-      className="font-display text-2xl font-semibold italic mt-8 mb-3 pb-2"
+      className="font-display text-2xl mt-10 mb-4 pb-2"
       style={{ color: "var(--ink)", borderBottom: "1px solid var(--wire)" }}
     >
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-base font-medium mt-6 mb-2" style={{ color: "var(--ink)" }}>
+    <h3 className="font-display text-lg mt-7 mb-2" style={{ color: "var(--ink)" }}>
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="text-sm font-medium mt-4 mb-1 uppercase tracking-wide" style={{ color: "var(--dim)" }}>
+    <h4 className="font-mono text-xs font-medium mt-5 mb-1 uppercase tracking-wider" style={{ color: "var(--dim)" }}>
       {children}
     </h4>
   ),

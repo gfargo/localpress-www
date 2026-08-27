@@ -9,19 +9,18 @@ export function DocsSidebar({ categories }: { categories: WikiCategory[] }) {
 
   return (
     <nav aria-label="Documentation navigation">
-      <div className="mb-6">
-        <Link
-          href="/docs"
-          className="text-xs uppercase tracking-widest transition-opacity hover:opacity-75"
-          style={{ color: "var(--dim)" }}
-        >
-          ← All docs
+      <div className="mb-6 flex items-center gap-2">
+        <Link href="/docs" className="spec-label hover-ink">
+          ← index
         </Link>
       </div>
       {categories.map(({ name, pages }) => (
-        <div key={name} className="mb-6">
-          <div className="mb-2 px-2 text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>
-            {name}
+        <div key={name} className="mb-7">
+          <div className="mb-2.5 flex items-center gap-2 px-2">
+            <span className="spec-label" style={{ color: "var(--muted)" }}>
+              {name}
+            </span>
+            <span className="rule flex-1" aria-hidden="true" />
           </div>
           <ul className="space-y-0.5">
             {pages.map((page) => {
@@ -30,11 +29,13 @@ export function DocsSidebar({ categories }: { categories: WikiCategory[] }) {
                 <li key={page.slug}>
                   <Link
                     href={`/docs/${page.slug}`}
-                    className="block rounded px-2 py-1.5 text-xs transition-colors"
+                    className="block rounded py-1.5 pl-3 pr-2 text-xs leading-snug transition-colors"
                     style={{
                       color: isActive ? "var(--accent)" : "var(--body)",
                       background: isActive ? "var(--accent-subtle)" : "transparent",
-                      borderLeft: isActive ? "2px solid var(--accent)" : "2px solid transparent",
+                      borderLeft: isActive
+                        ? "2px solid var(--accent)"
+                        : "2px solid var(--wire)",
                     }}
                   >
                     {page.title}
