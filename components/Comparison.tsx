@@ -30,7 +30,7 @@ export function Comparison() {
               How localPress stacks up.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-              Feature-by-feature against the five most popular WordPress image optimization plugins.
+              Feature by feature against five WordPress image optimization plugins you already know.
             </p>
           </div>
         </FadeIn>

@@ -5,7 +5,7 @@ const pillars = [
     num: "01",
     title: "Your hardware does the work",
     pain: "Cloud plugins charge $4–13/month for compute your laptop does for free.",
-    fix: "Run BiRefNet, ISNet, or lightweight U2-Net models locally. Downloads are pinned and checksum-verified, then one loaded session is reused across the batch.",
+    fix: "Run BiRefNet, ISNet, or lightweight U2-Net models locally. localPress pins and checksum-verifies every download, then reuses one loaded session across the whole batch.",
   },
   {
     num: "02",
@@ -17,7 +17,7 @@ const pillars = [
     num: "03",
     title: "Round-trip with real editors",
     pain: "No plugin lets you open an image in Photoshop, edit, and sync back.",
-    fix: "Open in GIMP, Photoshop, or Preview. Save. It syncs back automatically — the workflow designers actually want, and no one else offers.",
+    fix: "Open in GIMP, Photoshop, or Preview. Save. It syncs back on its own. This is the workflow designers actually want, and no one else offers it.",
   },
   {
     num: "04",
@@ -44,9 +44,9 @@ export function Features() {
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
-              Smush, ShortPixel, Imagify — they all ship your images to a remote server and bill you
+              Smush, ShortPixel, and Imagify all ship your images to a remote server and bill you
               per-image or per-month. localPress processes everything on your own machine and syncs
-              results back via the REST API. Four reasons that changes everything.
+              the results back over the REST API. Four reasons that&apos;s a better deal.
             </p>
           </div>
         </FadeIn>

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     default: "localPress — Local-first WordPress tooling",
   },
   description:
-    "Local-first WordPress tooling. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress. No cloud SaaS. No recurring credits. No plugin required.",
+    "Local-first WordPress tooling. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors, then sync back to WordPress. No cloud SaaS, no recurring credits, no plugin.",
   keywords: [
     "wordpress",
     "cli",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     siteName: "localPress",
     title: "localPress — Local-first WordPress tooling",
     description:
-      "Local-first WordPress tooling. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors — then sync back to WordPress.",
+      "Local-first WordPress tooling. Compress images, remove backgrounds, convert formats, and round-trip with desktop editors, then sync back to WordPress.",
     images: [
       {
         url: "/og-image.png",

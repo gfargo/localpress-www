@@ -68,9 +68,9 @@ export function Hero({ version }: { version: string }) {
 
         <FadeIn delay={180}>
           <p className="mt-7 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: "var(--body)" }}>
-            Optimize images, remove backgrounds, generate AI metadata, audit accessibility, and
-            reverse any change — all processed locally on your laptop, then pushed to any WordPress
-            site over the REST API. No cloud SaaS. No per-image credits. No plugin required.
+            Optimize images, strip backgrounds, generate metadata, audit accessibility, and undo any
+            change. It all runs on your own laptop, then pushes to any WordPress site over the REST
+            API. No cloud SaaS, no per-image credits, no plugin.
           </p>
         </FadeIn>
 
@@ -111,7 +111,7 @@ export function Hero({ version }: { version: string }) {
         <FadeIn delay={340}>
           <div className="mt-16">
             <div className="mb-2 flex items-end justify-between">
-              <span className="spec-label">fig.01 — interactive media browser</span>
+              <span className="spec-label">fig.01 · interactive media browser</span>
               <span className="spec-label hidden sm:inline">$ localpress list -i</span>
             </div>
             <div

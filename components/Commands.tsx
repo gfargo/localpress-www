@@ -14,7 +14,7 @@ const featured = [
     category: "AI",
     tagline: "Background removal. No cloud.",
     detail:
-      "Five checksum-verified ONNX models, including BiRefNet — all running on your hardware. Preview first; batch runs reuse one loaded model session.",
+      "Five checksum-verified ONNX models, including BiRefNet, all running on your hardware. Preview first; batch runs reuse one loaded model session.",
     example: "localpress remove-bg 847 --model birefnet-lite --preview",
   },
   {
@@ -22,7 +22,7 @@ const featured = [
     category: "Discovery",
     tagline: "Seven health checks, one command",
     detail:
-      "Unoptimized, oversized, missing alt text, display-size mismatch, duplicate images, broken refs, orphaned files — surfaced in seconds.",
+      "Unoptimized, oversized, missing alt text, display-size mismatch, duplicate images, broken refs, orphaned files. Every check runs in seconds.",
     example: "localpress audit",
   },
 ];
@@ -38,7 +38,7 @@ const secondary = [
     name: "watch",
     category: "Automation",
     tagline: "Drop files. They appear in WordPress.",
-    detail: "Watch a local directory for new or changed images — including atomic editor saves — then optimize and push continuously.",
+    detail: "Watch a local directory for new or changed images, including atomic editor saves, then optimize and push continuously.",
   },
   {
     name: "edit",
@@ -88,8 +88,8 @@ export function Commands() {
                 38 commands. One binary.
               </h2>
               <p className="mt-4 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-                From a single image to your entire library — processing stays local, bulk writes are
-                dry-run safe, and shared concurrency keeps batches predictable.
+                One image or your whole library, the processing stays on your machine. Bulk writes
+                dry-run by default, and shared concurrency keeps batches predictable.
               </p>
             </div>
             <div

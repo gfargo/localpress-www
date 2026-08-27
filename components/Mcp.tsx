@@ -47,8 +47,8 @@ export function Mcp() {
             </h2>
             <p className="mt-5 max-w-xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
               Drop one config block into Claude Desktop, Cursor, Kiro, or any MCP client. 52 typed
-              tools cover every operation — from bulk optimization to accessibility audits. Same
-              binary, new entrypoint. Agents manage your entire media library autonomously.
+              tools cover every operation, including bulk optimization and accessibility audits. Same
+              binary, new entrypoint. Now an agent can run your whole media library on its own.
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export function Mcp() {
         {/* Agent demo GIF */}
         <div className="mb-12">
           <div className="mb-3 flex items-end justify-between">
-            <span className="spec-label">fig.04 — agent driving localpress</span>
+            <span className="spec-label">fig.04 · agent driving localpress</span>
             <span className="spec-label hidden sm:inline">claude · localpress mcp</span>
           </div>
           <div
@@ -94,7 +94,7 @@ export function Mcp() {
                 <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
                 <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--muted)" }} />
               </div>
-              <span className="ml-2 font-mono text-xs" style={{ color: "var(--dim)" }}>claude — localpress MCP</span>
+              <span className="ml-2 font-mono text-xs" style={{ color: "var(--dim)" }}>claude · localpress MCP</span>
             </div>
             <div style={{ background: "#1e1e2e" }}>
               <Image
@@ -109,7 +109,7 @@ export function Mcp() {
             </div>
           </div>
           <p className="mt-4 text-sm" style={{ color: "var(--body)" }}>
-            An AI agent finds and optimizes unoptimized images — no manual commands needed.
+            An AI agent finds unoptimized images and compresses them, no manual commands needed.
           </p>
         </div>
 

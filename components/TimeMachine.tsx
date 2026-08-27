@@ -5,7 +5,7 @@ const flow = [
   {
     num: "01",
     title: "Run anything",
-    body: "Optimize, convert, resize, remove-bg, caption — bulk or single. Before a source or metadata write, localpress captures the state needed to recover it.",
+    body: "Optimize, convert, resize, remove-bg, caption, in bulk or one at a time. Before any source or metadata write, localpress captures the state needed to recover it.",
     cmd: "localpress optimize --unoptimized --apply",
   },
   {

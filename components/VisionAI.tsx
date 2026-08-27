@@ -5,9 +5,9 @@ const fields = [
   { cmd: "alt", title: "Alt text", body: "Concise single-sentence description for accessibility. Writes to alt_text." },
   { cmd: "title", title: "Title", body: "3-7 word noun phrase. Auto-detects machine-generated names (Screenshot-…, IMG_…) for bulk cleanup." },
   { cmd: "describe", title: "Description", body: "2-3 sentence description for galleries and attachment-page SEO. Writes to the description field." },
-  { cmd: "tag", title: "Tags", body: "3-6 short tags appended to the caption as a [tags: …] block. Universal — no taxonomy plugin needed." },
+  { cmd: "tag", title: "Tags", body: "3-6 short tags appended to the caption as a [tags: …] block. Works everywhere, no taxonomy plugin needed." },
   { cmd: "classify", title: "Type", body: "Detects screenshot/photo/illustration/diagram. Cached locally so optimize picks PNG vs WebP automatically." },
-  { cmd: "rename", title: "Slug", body: "AI-generated permalink slug (with --smart) or explicit (--to). Honest about file URL — slug only for v1." },
+  { cmd: "rename", title: "Slug", body: "AI-generated permalink slug (with --smart) or explicit (--to). Straight talk on the file URL: slug only for v1." },
 ];
 
 const unifiedExample = `# Print all five fields for review
@@ -32,7 +32,7 @@ export function VisionAI() {
             <p className="mt-5 max-w-2xl text-sm leading-relaxed md:text-base" style={{ color: "var(--body)" }}>
               The same local Ollama vision model that powers <code className="font-mono" style={{ color: "var(--warm)" }}>caption</code>{" "}
               now generates titles, descriptions, tags, image-type classifications, and AI-renamed
-              slugs. Each is a dedicated command — or run them all at once with{" "}
+              slugs. Each is its own command, or run them all at once with{" "}
               <code className="font-mono" style={{ color: "var(--warm)" }}>vision</code>.
             </p>
           </div>
@@ -64,7 +64,7 @@ export function VisionAI() {
         {/* Unified workflow */}
         <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center">
           <div>
-            <p className="spec-label mb-3">// or — all at once</p>
+            <p className="spec-label mb-3">// or · all at once</p>
             <h3 className="font-display mb-3 text-2xl" style={{ color: "var(--ink)" }}>The vision workflow</h3>
             <p className="mb-4 text-sm leading-relaxed" style={{ color: "var(--body)" }}>
               <code className="font-mono" style={{ color: "var(--warm)" }}>localpress vision &lt;id&gt;</code> runs all five
@@ -73,9 +73,9 @@ export function VisionAI() {
               WordPress in a single composed update.
             </p>
             <p className="text-sm leading-relaxed" style={{ color: "var(--body)" }}>
-              Classification is cached locally — subsequent{" "}
+              localPress caches the classification locally, so later{" "}
               <code className="font-mono" style={{ color: "var(--warm)" }}>optimize</code> calls on the same attachment
-              automatically pick PNG for screenshots and WebP for photos.
+              pick PNG for screenshots and WebP for photos on their own.
             </p>
           </div>
           <div className="overflow-hidden rounded-lg" style={{ border: "1px solid var(--border)" }}>

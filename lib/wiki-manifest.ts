@@ -40,7 +40,7 @@ export const wikiPages: WikiPage[] = [
     wikiPath: "AI-Agent-Integration",
     category: "Guides",
     order: 3,
-    description: "Use localPress with Claude Desktop, Cursor, and other AI agents — via the first-party MCP server or the companion markdown skill.",
+    description: "Use localPress with Claude Desktop, Cursor, and other AI agents through the first-party MCP server or the companion markdown skill.",
   },
   {
     slug: "wp-cli-ssh-setup",
