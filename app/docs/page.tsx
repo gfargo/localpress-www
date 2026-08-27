@@ -71,6 +71,29 @@ export default function DocsPage() {
             <dd style={{ color: "var(--dim)" }}>On deploy</dd>
           </div>
         </dl>
+
+        {/* Notation legend */}
+        <div
+          className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[0.6875rem]"
+          style={{ color: "var(--muted)" }}
+        >
+          <span className="uppercase tracking-wider">Legend</span>
+          {[
+            { key: "§NN", desc: "section" },
+            { key: "G.NN", desc: "guide" },
+            { key: "R.NN", desc: "reference" },
+          ].map(({ key, desc }) => (
+            <span key={key} className="flex items-center gap-2">
+              <span
+                className="rounded px-1.5 py-0.5"
+                style={{ background: "var(--accent-subtle)", color: "var(--accent)" }}
+              >
+                {key}
+              </span>
+              <span style={{ color: "var(--dim)" }}>{desc}</span>
+            </span>
+          ))}
+        </div>
       </header>
 
       {/* Category index — technical manual TOC */}
@@ -135,6 +158,50 @@ export default function DocsPage() {
           )
         })}
       </div>
+
+      {/* Agent callout — or don't read them at all */}
+      <aside
+        className="mt-14 overflow-hidden rounded-lg"
+        style={{ border: "1px solid var(--accent-mid)", background: "var(--accent-subtle)" }}
+      >
+        <div className="flex flex-col gap-5 p-6 md:flex-row md:items-center md:justify-between md:p-7">
+          <div className="min-w-0">
+            <p className="spec-label mb-3" style={{ color: "var(--accent)" }}>
+              // or don&apos;t read them at all
+            </p>
+            <h2 className="font-display text-xl md:text-2xl" style={{ color: "var(--ink)" }}>
+              Let your agent read the docs for you.
+            </h2>
+            <p className="mt-2 max-w-lg text-sm leading-relaxed" style={{ color: "var(--body)" }}>
+              localPress ships a first-party MCP server — 52 typed tools and 4 resources. Point
+              Claude Desktop, Cursor, or Kiro at it and let the model run the commands, read the
+              reference, and optimize your library while you do something else.
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs">
+              <Link href="/docs/mcp-setup" className="hover-ink" style={{ color: "var(--accent)" }}>
+                MCP Setup →
+              </Link>
+              <Link href="/docs/ai-agent-integration" className="hover-ink" style={{ color: "var(--accent)" }}>
+                Agent Integration →
+              </Link>
+              <Link href="/#agents" className="hover-ink" style={{ color: "var(--dim)" }}>
+                See it in action ↗
+              </Link>
+            </div>
+          </div>
+
+          {/* Config snippet */}
+          <pre
+            className="shrink-0 overflow-x-auto rounded-md p-4 font-mono text-[0.6875rem] leading-relaxed md:max-w-xs"
+            style={{ background: "var(--surface)", border: "1px solid var(--wire)", color: "var(--body)" }}
+          >
+            <code>{`"localpress": {
+  "command": "npx",
+  "args": ["localpress", "mcp"]
+}`}</code>
+          </pre>
+        </div>
+      </aside>
 
       {/* Resources */}
       <div className="mt-14 border-t pt-8" style={{ borderColor: "var(--wire)" }}>
